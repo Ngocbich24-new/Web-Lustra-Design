@@ -409,7 +409,7 @@ body {
 
 .slides {
   display: flex;
-  width: 300%;
+  width: 100%;
   height: 100%;
   transition: transform 0.5s ease-in-out;
 }
@@ -1227,7 +1227,44 @@ body {
   background-color: #fff;
   padding: 1rem;
   text-align: left;
+  cursor: pointer;
 }
+
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.wishlist-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 20px;
+  color: white;
+  border-radius: 50%;
+  padding: 6px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.wishlist-icon:hover {
+  color: red;
+}
+
+#confirmation-msg {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #3a3a3a;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  display: none;
+  z-index: 1000;
+}
+
+
 
 .product-card-men:hover {
   border: 1px solid #e5e5e5;
@@ -1372,6 +1409,7 @@ body {
   position: relative;
   overflow: hidden;
   padding-left: 0; /* Ensures left alignment with title */
+  cursor: pointer;
 }
 
 .carousel-track {
@@ -1521,6 +1559,7 @@ body {
   object-fit: cover;
   display: block;
   filter: brightness(0.95);
+  cursor: pointer;
 }
 
 .men-sport-btn {

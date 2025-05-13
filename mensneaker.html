@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sneakers | Lustra</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+
+
+  body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 1.5rem;
+  background-color: #fff;
+  color: #000;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 1rem;
+}
+
+.breadcrumb a {
+  color: #000;
+  text-decoration: none;
+}
+
+.breadcrumb span {
+  margin: 0 5px;
+}
+
+.breadcrumb .current {
+  font-weight: bold;
+  color: #000;
+}
+
+.page-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.filter {
+  position: relative;
+  margin: 0 6px;
+  font-size: 14px;
+  display: inline-block;
+}
+
+.filter-select {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.filter-select i {
+  margin-left: 8px;
+  transition: transform 0.2s ease;
+}
+
+.filter.open .filter-select i {
+  transform: rotate(180deg);
+}
+
+.custom-options {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background: #fff;
+  border: 1px solid #000;
+  padding: 8px;
+  z-index: 10;
+  display: none;
+  flex-direction: column;
+  border-radius: 4px;
+  min-width: 150px;
+}
+
+.filter.open .custom-options {
+  display: flex;
+}
+
+.custom-options label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.custom-options label:hover {
+  background-color: #f0f0f0;
+}
+
+.checkbox {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #000;
+  text-align: center;
+  line-height: 16px;
+  font-size: 12px;
+  cursor: pointer;
+  user-select: none;
+  background: #fff;
+}
+
+.checkbox.checked {
+  background: #000;
+  color: #fff;
+}
+
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+}
+
+.filters-left select,
+.filters-right select {
+  padding: 8px 12px;
+  margin: 0 6px;
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.filters-left i {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.filters-left .more-filters {
+  margin-left: 8px;
+  font-size: 13px;
+  color: #111;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.filters-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+
+.active-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px; /* slightly smaller gap */
+  margin-top: 0.75rem; /* reduce spacing from filters */
+  margin-bottom: 4rem;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px; /* smaller gap between tags */
+  flex-grow: 1;
+}
+
+.tag {
+  background: #fafafa;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 3px 8px; /* smaller padding */
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px; /* smaller text */
+}
+
+.tag .remove-tag {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.clear-all {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 13px;
+  border-bottom: 1px solid #000;
+}
+
+
+
+.sort-filter {
+  position: relative;
+}
+
+.sort-filter .filter-select {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+}
+
+.sort-filter .filter-select i {
+  transition: transform 0.2s ease;
+}
+
+.sort-filter.open .filter-select i {
+  transform: rotate(180deg);
+}
+
+.sort-filter .custom-options {
+  position: absolute;
+  top: 100%;
+  right: 0;              /* align right edge of box with trigger */
+  left: auto;            /* override default */
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 8px 0;
+  display: none;
+  flex-direction: column;
+  z-index: 100;
+  width: fit-content;
+  white-space: nowrap;
+  margin-top: 4px;
+    padding: 0; /* Remove default vertical padding */
+      overflow: hidden; /* Ensures children (first/last) sit flush */
+}
+
+.sort-filter.open .custom-options {
+  display: flex;
+}
+
+.sort-filter .custom-options .option {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.sort-filter .custom-options .option:hover {
+  background-color: #f0f0f0;
+}
+
+.sort-filter .custom-options .sort-option {
+  padding: 3px;           /* More padding for line spacing */
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  line-height: 1.6;             /* Adjusts vertical spacing */
+}
+
+.sort-filter .custom-options .sort-option:hover {
+  background-color: #3a3a3a;
+  color: #fff;
+}
+
+
+
+.product-count {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 1rem 0;
+}
+
+</style>
+
+</head>
+<body>
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span>›</span>
+    <a href="men.html">Men</a>
+    <span>›</span>
+    <a href="#">By Style</a>
+    <span>›</span>
+    <span class="current">Sneakers</span>
+  </nav>
+
+  <!-- Page Title -->
+  <div class="page-header">
+    <h1>MEN SNEAKERS</h1>
+  </div>
+
+  <!-- Filters and Sorting -->
+  <div class="filter-bar">
+    <div class="filters-left">
+
+  <!-- Product Type -->
+  <div class="filter">
+    <div class="filter-select" onclick="toggleDropdown(this)">
+      Product Type <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="custom-options">
+      <label><span class="checkbox" onclick="toggleCheck(this)"></span> Running</label>
+      <label><span class="checkbox" onclick="toggleCheck(this)"></span> Casual</label>
+      <label><span class="checkbox" onclick="toggleCheck(this)"></span> Slip-ons</label>
+    </div>
+  </div>
+
+  <!-- Price -->
+  <div class="filter">
+    <div class="filter-select" onclick="toggleDropdown(this)">
+      Price <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="custom-options">
+      <label><span class="checkbox" onclick="toggleCheck(this)"></span> Under $100</label>
+      <label><span class="checkbox" onclick="toggleCheck(this)"></span> $100–$200</label>
+      <label><span class="checkbox" onclick="toggleCheck(this)"></span> Over $200</label>
+    </div>
+  </div>
+
+  <!-- Size -->
+  <div class="filter">
+    <div class="filter-select" onclick="toggleDropdown(this)">
+      Size <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="custom-options">
+      <label><span class="checkbox" onclick="toggleCheck(this)"></span> US 7</label>
+      <label><span class="checkbox" onclick="toggleCheck(this)"></span> US 8</label>
+      <label><span class="checkbox" onclick="toggleCheck(this)"></span> US 9</label>
+      <label><span class="checkbox" onclick="toggleCheck(this)"></span> US 10</label>
+    </div>
+  </div>
+
+  <!-- Colour -->
+  <div class="filter">
+    <div class="filter-select" onclick="toggleDropdown(this)">
+      Colour <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="custom-options">
+      <label><span class="checkbox" onclick="toggleCheck(this)"></span> Black</label>
+      <label><span class="checkbox" onclick="toggleCheck(this)"></span> White</label>
+      <label><span class="checkbox" onclick="toggleCheck(this)"></span> Red</label>
+      <label><span class="checkbox" onclick="toggleCheck(this)"></span> Blue</label>
+    </div>
+  </div>
+
+  <!-- Gender -->
+  <div class="filter">
+    <div class="filter-select" onclick="toggleDropdown(this)">
+      Gender <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="custom-options">
+      <label><span class="checkbox" onclick="toggleCheck(this)"></span> Men</label>
+      <label><span class="checkbox" onclick="toggleCheck(this)"></span> Women</label>
+      <label><span class="checkbox" onclick="toggleCheck(this)"></span> Unisex</label>
+    </div>
+  </div>
+
+  <!-- Age Group -->
+  <div class="filter">
+    <div class="filter-select" onclick="toggleDropdown(this)">
+      Age Group <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="custom-options">
+      <label><span class="checkbox" onclick="toggleCheck(this)"></span> Adults</label>
+      <label><span class="checkbox" onclick="toggleCheck(this)"></span> Kids</label>
+      <label><span class="checkbox" onclick="toggleCheck(this)"></span> Youth</label>
+    </div>
+  </div>
+
+</div>
+
+   <div class="filters-right">
+
+  <!-- Custom Sort Dropdown -->
+  <div class="filter sort-filter">
+    <div class="filter-select" onclick="toggleDropdown(this)">
+      Sort by <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="custom-options">
+      <div class="sort-option" onclick="selectSortOption(this)">Price: Low to High</div>
+      <div class="sort-option" onclick="selectSortOption(this)">Price: High to Low</div>
+      <div class="sort-option" onclick="selectSortOption(this)">Newest</div>
+      <div class="sort-option" onclick="selectSortOption(this)">Popular</div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+
+<!--Tag Container (OUTSIDE filter-bar) -->
+<div class="active-tags" id="active-tags">
+  <div class="tag-list" id="tag-list"></div>
+  <div class="clear-all" id="clear-all-tag" style="display: none;" onclick="clearAllTags()">
+    CLEAR ALL <span class="remove-tag">×</span>
+  </div>
+</div>
+
+
+<script>
+  function toggleDropdown(el) {
+    const filter = el.closest('.filter');
+    filter.classList.toggle('open');
+  }
+
+  function selectSortOption(optionEl) {
+    const dropdown = optionEl.closest('.sort-filter');
+    const display = dropdown.querySelector('.filter-select');
+    display.childNodes[0].textContent = optionEl.textContent + ' '; // update title
+    dropdown.classList.remove('open');
+  }
+
+  // Close all dropdowns if clicked outside
+  document.addEventListener('click', function (e) {
+    document.querySelectorAll('.filter').forEach(filter => {
+      if (!filter.contains(e.target)) {
+        filter.classList.remove('open');
+      }
+    });
+  });
+</script>
+
+
+
+<script>
+  const tagList = document.getElementById('tag-list');
+  const clearAllBtn = document.getElementById('clear-all-tag');
+
+  function toggleCheck(box) {
+    box.classList.toggle('checked');
+    event.stopPropagation();
+
+    const label = box.parentElement;
+    const value = label.textContent.trim();
+    const filter = box.closest('.filter');
+    const filterLabel = filter.querySelector('.filter-select')?.childNodes[0]?.textContent.trim();
+
+    const tagId = `${filterLabel}-${value}`.replace(/\s+/g, '-').toLowerCase();
+
+    if (box.classList.contains('checked')) {
+      addTag(filterLabel, value, tagId);
+    } else {
+      removeTag(tagId, true);
+    }
+
+    toggleClearAllVisibility();
+  }
+
+  function addTag(filterName, value, id) {
+    if (document.getElementById(id)) return;
+
+    const tag = document.createElement('div');
+    tag.className = 'tag';
+    tag.id = id;
+    tag.innerHTML = `<strong>${filterName}:</strong>${value} <span class="remove-tag" onclick="removeTag('${id}', true)">×</span>`;
+    tagList.appendChild(tag);
+  }
+
+  function removeTag(id, fromClick = false) {
+    const tag = document.getElementById(id);
+    if (tag) {
+      tag.remove();
+
+      if (fromClick) {
+        const parts = id.split('-');
+        const value = parts.slice(1).join('-');
+        document.querySelectorAll('.custom-options label').forEach(label => {
+          const labelText = label.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+          if (labelText === value) {
+            const checkbox = label.querySelector('.checkbox');
+            checkbox.classList.remove('checked');
+            checkbox.textContent = '';
+          }
+        });
+      }
+
+      toggleClearAllVisibility();
+    }
+  }
+
+  function toggleClearAllVisibility() {
+    const hasTags = tagList.querySelectorAll('.tag').length > 0;
+    clearAllBtn.style.display = hasTags ? 'flex' : 'none';
+  }
+
+  function clearAllTags() {
+    tagList.innerHTML = '';
+    document.querySelectorAll('.checkbox.checked').forEach(box => {
+      box.classList.remove('checked');
+      box.textContent = '';
+    });
+    toggleClearAllVisibility();
+  }
+</script>
+
+
+
+  <!-- Product count -->
+  <div class="product-count">
+    <strong>145 PRODUCTS</strong>
+  </div>
+
+</body>
+</html>
