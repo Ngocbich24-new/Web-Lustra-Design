@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Shopping Cart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Michroma&display=swap" rel="stylesheet">
+        <link href="https://fonts.google.com/specimen/Oswald" rel="stylesheet">
+</head>
+<body>
+
+        <!-- Top bar -->
+<div class="topbar1" id="topbar-message">
+  <div class="topbar-text">
+    <span>FREE SHIPPING &amp; FREE RETURN</span>
+  </div>
+</div>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const topbarText = document.querySelector(".topbar-text");
+    const messages = [
+      "FREE SHIPPING & FREE RETURN",
+      "BECOME A MEMBER. Get rewards!"
+    ];
+    let index = 0;
+
+    function swapMessage() {
+      const oldSpan = topbarText.querySelector("span");
+
+      index = (index + 1) % messages.length;
+      const newSpan = document.createElement("span");
+      newSpan.textContent = messages[index];
+      newSpan.style.position = "absolute";
+      newSpan.style.left = "0";
+      newSpan.style.right = "0";
+      newSpan.style.top = "0";
+      newSpan.style.transform = "translateY(-100%)";
+      newSpan.style.transition = "transform 0.4s ease-in-out";
+
+      topbarText.appendChild(newSpan);
+
+      // Force reflow to apply initial position
+      void newSpan.offsetHeight;
+
+      // Animate in and out
+      newSpan.style.transform = "translateY(0)";
+      oldSpan.style.transform = "translateY(100%)";
+
+      // Remove old span after transition ends
+      setTimeout(() => {
+        if (oldSpan && oldSpan.parentElement === topbarText) {
+          topbarText.removeChild(oldSpan);
+        }
+      }, 400); // matches transition duration
+    }
+
+    // Start loop every 5 seconds
+    setInterval(swapMessage, 5000);
+  });
+</script>
+
+
+
+<header class="header">
+  <div class="logo-nav">
+    <a href="index.html">
+  <img src="Lustra_Logo.png" width="100" height="70" alt="Lustra Logo" />
+</a>
+      </div>
+
+    <nav class="main-nav">
+      <ul>
+          <li class="has-dropdown">
+            <a href="#">NEW &amp; FEATURED</a>
+            <div class="mega-menu">
+            <div class="category">
+              <h3>New</h3>
+              <ul>
+              <li><a href="men.html">New for Men</a></li>
+              <li><a href="#">New for Women</a></li>
+              <li><a href="#">New for Kids</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>Featured</h3>
+              <ul>
+                <li><a href="#">Best Sellers</a></li>
+              <li><a href="#">Launch Calendar</a></li>
+              <li><a href="#">Lustra Stars</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>Shop Icons</h3>
+              <ul>
+                  <li><a href="#">KickStarter</a></li>
+              <li><a href="#">Lustra Shine</a></li>
+              <li><a href="#">Deviate</a></li>
+              </ul>
+            </div>
+        </li>
+
+          <li class="has-dropdown">
+           <a href="men.html">MENS</a>
+
+            <div class="mega-menu">
+            <div class="category">
+              <h3>Featured</h3>
+              <ul>
+              <li><a href="#">New Releases</a></li>
+              <li><a href="#">Best Sellers</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>By Style</h3>
+              <ul>
+               <li><a href="#">Sneakers</a></li>
+              <li><a href="#">Boots</a></li>
+              <li><a href="#">Loafers</a></li>
+              <li><a href="#">Sandals &amp; Slides</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>By Sports</h3>
+              <ul>
+                <li><a href="#">Football</a></li>
+              <li><a href="#">Running</a></li>
+              <li><a href="#">Basketball</a></li>
+              <li><a href="#">Training &amp; Gym</a></li>
+              <li><a href="#">Boxing</a></li>
+              <li><a href="#">Tennis</a></li>
+                <li><a href="#">Volleyball</a></li>
+              </ul>
+            </div>
+          </li>
+
+            <!-- Women -->
+          <li class="has-dropdown">
+              <a href="women.html">WOMENS</a>
+            <div class="mega-menu">
+            <div class="category">
+              <h3>Featured</h3>
+              <ul>
+              <li><a href="#">New Releases</a></li>
+              <li><a href="#">Best Sellers</a></li>
+              <li><a href="#">Retro Running Sneakers</a></li>
+               <li><a href="#">Lustra by You</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>By Style</h3>
+              <ul>
+              <li><a href="#">Sneakers</a></li>
+              <li><a href="#">Boots</a></li>
+              <li><a href="#">Loafers</a></li>
+              <li><a href="#">Sandals &amp; Slides</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>By Sports</h3>
+              <ul>
+              <li><a href="#">Yoga</a></li>
+              <li><a href="#">Tennis</a></li>
+              <li><a href="#">Running</a></li>
+              <li><a href="#">Football</a></li>
+              <li><a href="#">Golf</a></li>
+              <li><a href="#">Training &amp; Gym</a></li>
+              </ul>
+            </div>
+        </li>
+
+
+         <!-- Kids -->
+          <li class="has-dropdown">
+               <a href="kids.html">KIDS</a>
+            <div class="mega-menu">
+            <div class="category">
+              <h3>Featured</h3>
+              <ul>
+              <li><a href="#">New Releases</a></li>
+              <li><a href="#">Best Sellers</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>All Shoes</h3>
+              <ul>
+              <li><a href="#">Lifestyle</a></li>
+              <li><a href="#">Running</a></li>
+              <li><a href="#">Football</a></li>
+                      <li><a href="#">Basketball</a></li>
+                      <li><a href="#">Skateboarding</a></li>
+                      <li><a href="#">Lustra by You</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>Kids By Age</h3>
+              <ul>
+              <li><a href="#">Older Kids (7–15 years)</a></li>
+              <li><a href="#">Younger Kids (3–7 years)</a></li>
+              <li><a href="#">Babies &amp; Toddlers (0–3 years)</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>Collections</h3>
+              <ul>
+            <li><a href="#">LUSTRA x Doraemon</a></li>
+              <li><a href="#">LUSTRA x Harry Potter</a></li>
+              <li><a href="#">LUSTRA x Disney</a></li>
+                  </ul>
+            </div>
+        </li>
+
+
+          <!-- Sales -->
+          <li class="has-dropdown">
+            <a href="#">SALES</a>
+            <div class="mega-menu">
+            <div class="category">
+              <h3>Deals</h3>
+              <ul>
+              <li><a href="#">Under $50</a></li>
+              <li><a href="#">Under $100</a></li>
+              <li><a href="#">Clearance</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>Sale Seasons</h3>
+              <ul>
+              <li><a href="#">Up to 10% off</a></li>
+                <li><a href="#">Up to 20% off</a></li>
+                <li><a href="#">Up to 30% off</a></li>
+                <li><a href="#">Up to 40% off</a></li>
+                  <li><a href="#">All Sales</a></li>
+              </ul>
+            </div>
+
+        </li>
+      </ul>
+    </nav>
+
+
+ <div class="icons">
+      <div class="search-bar">
+        <input type="text" placeholder="Search" />
+        <i class="fa fa-search"></i>
+      </div>
+      <i class="fa-regular fa-user"></i>
+      <i class="fa-regular fa-heart"></i>
+      <i class="fa-solid fa-bag-shopping"></i>
+    </div>
+  </div>
+
+</header>
+
+
+
+
+<div class="shoppingbag-container">
+  <div class="shoppingbag-items">
+    <h2 class="shoppingbag-title">Bag</h2>
+    <div id="empty-message" class="empty-message" style="display: none;">There are no items in your bag.</div>
+
+    <div class="shoppingbag-item" data-id="0">
+      <img src="shoe1.png" alt="Nike Vomero 18" />
+      <div class="item-details">
+        <h3>Nike Vomero 18</h3>
+        <p class="product-category">Women's Shoes</p>
+        <p class="product-color">Pearl Pink/White/Olive Aura/Elemental Pink</p>
+        <p>Size <span class="size">3Y</span></p>
+        <div class="item-price" id="price-0" data-price="160">$160.00</div>
+        <div class="item-actions">
+          <div class="quantity" data-id="0">
+            <button onclick="changeQuantity(0, -1)">-</button>
+            <span id="qty-0">1</span>
+            <button onclick="changeQuantity(0, 1)">+</button>
+          </div>
+        </div>
+        <div class="icon-bottom-right">
+          <button class="icon-btn delete-btn">&#128465;</button>
+          <button class="icon-btn favorite-btn">&#10084;</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="shoppingbag-item" data-id="1">
+      <img src="shoe2.png" alt="Nike Pegasus" />
+      <div class="item-details">
+        <h3>Nike Pegasus</h3>
+        <p class="product-category">Women's Shoes</p>
+        <p class="product-color">Summit White/Blue Tint/Geode Teal</p>
+        <p>Size <span class="size">7</span></p>
+        <div class="item-price" id="price-1" data-price="220">
+          <span class="original-price">$220.00</span>
+          <span class="sale-price">$198.00</span>
+        </div>
+        <div class="item-actions">
+          <div class="quantity" data-id="1">
+            <button onclick="changeQuantity(1, -1)">-</button>
+            <span id="qty-1">1</span>
+            <button onclick="changeQuantity(1, 1)">+</button>
+          </div>
+        </div>
+        <div class="icon-bottom-right">
+          <button class="icon-btn delete-btn">&#128465;</button>
+          <button class="icon-btn favorite-btn">&#10084;</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="shoppingbag-item" data-id="2">
+      <img src="shoe3.png" alt="Nike Air Zoom" />
+      <div class="item-details">
+        <h3>Nike Air Zoom</h3>
+        <p class="product-category">Men's Shoes</p>
+        <p class="product-color">Black/White/Dark Grey</p>
+        <p>Size <span class="size">9</span></p>
+        <div class="item-price" id="price-2" data-price="140">$140.00</div>
+        <div class="item-actions">
+          <div class="quantity" data-id="2">
+            <button onclick="changeQuantity(2, -1)">-</button>
+            <span id="qty-2">1</span>
+            <button onclick="changeQuantity(2, 1)">+</button>
+          </div>
+        </div>
+        <div class="icon-bottom-right">
+          <button class="icon-btn delete-btn">&#128465;</button>
+          <button class="icon-btn favorite-btn">&#10084;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="shoppingbag-summary">
+    <h2>Summary</h2>
+    <div class="summary-row"><span>Subtotal</span><span id="subtotal">$498.00</span></div>
+    <div class="summary-row"><span>Shipping</span><span>Free</span></div>
+    <hr />
+    <div class="summary-row total"><strong>Total</strong><strong id="total">$498.00</strong></div>
+    <p class="gst-note">Inclusive of 10% GST</p>
+    <button class="shoppingbag-btn" onclick="location.href='checkout.html'">Checkout</button>
+    <button class="continue-btn" onclick="location.href='homepage.html'">Continue Shopping</button>
+  </div>
+</div>
+
+
+<div id="undo-snackbar">Item removed. <button onclick="undoDelete()">Undo</button></div>
+<div id="confirm-overlay">
+  <div id="confirm-box">
+    <p>Are you sure you want to remove this item?</p>
+    <button id="confirm-yes">Yes</button>
+    <button id="confirm-no">No</button>
+  </div>
+</div>
+
+<script>
+  const itemPrices = {
+    0: { base: 160, sale: false },
+    1: { base: 220, sale: true },
+    2: { base: 140, sale: false }
+  };
+  const quantities = { 0: 1, 1: 1, 2: 1 };
+  let pendingDelete = null;
+
+  function changeQuantity(id, delta) {
+    if (!(id in quantities)) return;
+    quantities[id] += delta;
+    if (quantities[id] < 1) quantities[id] = 1;
+    document.getElementById(`qty-${id}`).innerText = quantities[id];
+    updatePrice(id);
+  }
+
+  function updatePrice(id) {
+    const priceEl = document.getElementById(`price-${id}`);
+    const { base, sale } = itemPrices[id];
+    const unitPrice = sale ? base * 0.9 : base;
+    const total = unitPrice * quantities[id];
+    priceEl.innerHTML = sale
+      ? `<span class="original-price">$${(base * quantities[id]).toFixed(2)}</span> <span class="sale-price">$${total.toFixed(2)}</span>`
+      : `$${total.toFixed(2)}`;
+    updateCartTotal();
+  }
+
+  function updateCartTotal() {
+    let subtotal = 0;
+    const cartItems = document.querySelectorAll('.shoppingbag-item');
+    cartItems.forEach(item => {
+      const id = item.dataset.id;
+      if (!quantities[id]) return;
+      const { base, sale } = itemPrices[id];
+      const unit = sale ? base * 0.9 : base;
+      subtotal += unit * quantities[id];
+    });
+    document.getElementById('subtotal').innerText = `$${subtotal.toFixed(2)}`;
+    document.getElementById('total').innerText = `$${subtotal.toFixed(2)}`;
+    document.getElementById('empty-message').style.display = cartItems.length ? 'none' : 'block';
+  }
+
+  // Toggle favorite icon
+  document.querySelectorAll('.favorite-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('favorited');
+    });
+  });
+
+  // Handle delete confirmation
+  document.querySelectorAll('.delete-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      pendingDelete = btn.closest('.shoppingbag-item');
+      document.getElementById('confirm-overlay').style.display = 'flex';
+    });
+  });
+
+  // Confirm YES
+  document.getElementById('confirm-yes').addEventListener('click', () => {
+    if (!pendingDelete) return;
+    const id = pendingDelete.dataset.id;
+
+    // Remove DOM element and update data
+    pendingDelete.remove();
+    delete quantities[id];
+
+    // Hide overlay
+    document.getElementById('confirm-overlay').style.display = 'none';
+
+    // Recalculate price and empty message
+    updateCartTotal();
+  });
+
+  // Cancel deletion
+  document.getElementById('confirm-no').addEventListener('click', () => {
+    pendingDelete = null;
+    document.getElementById('confirm-overlay').style.display = 'none';
+  });
+
+  updateCartTotal();
+</script>
+
+
+<!-- Footer -->
+				<section id="footer">
+            <div class="container">
+                  <div class="row">
+
+                <!-- Products -->
+                    <div class="products">
+                          <h7>PRODUCTS</h7>
+                              <ul>
+                                  <li><a href="men.html">MEN</a></li>
+                                  <li><a href="women.html">WOMEN</a></li>
+                                  <li><a href="kids.html">KIDS</a></li>
+                                  <li><a href="#">NEW ARRIVALS</a></li>
+                                  <li><a href="#">BEST SELLERS</a></li>
+                                  <li><a href="sales.html">SALES</a></li>
+                                </ul>
+                      </div>
+
+                 <!-- Resources -->
+                      <div class="resources">
+                        <h7>RESOURCES</h7>
+                        <ul>
+                          <li><a href="#">FIND A STORE</a></li>
+                          <li><a href="#">BECOME A MEMBER</a></li>
+                          <li><a href="#">PROMO CODES</a></li>
+                        </ul>
+                      </div>
+
+                <!-- Help -->
+                <div class="help">
+                            <h7>HELP</h7>
+                              <ul>
+                                <li><a href="#">ORDER STATUS</a></li>
+                                <li><a href="#">SHIPPING & DELIVERY</a></li>
+                                <li><a href="#">PAYMENT OPTIONS</a></li>
+                                <li><a href="#">CONTACT US</a></li>
+                              </ul>
+                            </div>
+
+                <!-- About Us -->
+                <div class="aboutus">
+                        <h7>ABOUT US</h7>
+                              <ul>
+                                <li><a href="#">ABOUT LUSTRA</a></li>
+                                <li><a href="#">NEWS</a></li>
+                                <li><a href="#">CAREERS</a></li>
+                              </ul>
+                            </div>
+
+        
+
+			<!-- Social Media Icon -->
+	
+					<div class="explore">
+                        <h7>EXPLORE</h7>
+                        <div class="socialmedia">
+                          <div class="icon facebook" data-label="Facebook">
+                            <span><i class="fa-brands fa-facebook"></i></span>
+                          </div>
+                          <div class="icon instagram" data-label="Instagram">
+                            <span><i class="fa-brands fa-instagram"></i></span>
+                          </div>
+                          <div class="icon tiktok" data-label="TikTok">
+                            <span><i class="fa-brands fa-tiktok"></i></span>
+                          </div>
+                          <div class="icon youtube" data-label="Youtube">
+                            <span><i class="fa-brands fa-youtube"></i></span>
+                          </div>
+                        </div>
+                      </div>
+
+                      
+        </div>
+
+			<!-- Copyright -->
+				<div id="copyright"> Privary Policy | Cookie Settings | Terms &amp; Conditions </div>
+					</div>
+		 </div>
+</section>
+
+</body>
+
+
+
+</html>

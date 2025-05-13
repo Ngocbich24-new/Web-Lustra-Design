@@ -1,0 +1,604 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout. Lustra Offical Store</title>
+  <link rel="stylesheet" href="style.css" />
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Michroma&display=swap" rel="stylesheet">
+        <link href="https://fonts.google.com/specimen/Oswald" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #111;
+      padding-bottom: 5px;
+    }
+
+    .section {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 20px;
+      margin-bottom: 25px;
+      margin-top: 2.5rem;
+    }
+
+    .product {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem
+    }
+
+    .checkout-options {
+      margin-top: 2rem;
+
+    }
+    .product img {
+      width: 80px;
+      border-radius: 4px;
+    }
+
+    .product-details {
+      flex: 1;
+      margin-left: 15px;
+    }
+
+    .product-details h4 {
+      margin-bottom: 5px;
+    }
+
+    .price {
+      font-weight: bold;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .btn {
+      background-color: #111;
+      color: white;
+      padding: 15px 20px;
+      border: none;
+      width: 100%;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #333;
+    }
+
+    .checkout-options {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 25px;
+    }
+
+    .checkout-options label {
+      margin-right: 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+
+  </style>
+
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Michroma&display=swap" rel="stylesheet">
+        <link href="https://fonts.google.com/specimen/Oswald" rel="stylesheet">  
+
+       
+
+                 <!-- Top bar -->
+<div class="topbar1" id="topbar-message">
+  <div class="topbar-text">
+    <span>FREE SHIPPING &amp; FREE RETURN</span>
+  </div>
+</div>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const topbarText = document.querySelector(".topbar-text");
+    const messages = [
+      "FREE SHIPPING & FREE RETURN",
+      "BECOME A MEMBER. Get rewards!"
+    ];
+    let index = 0;
+
+    function swapMessage() {
+      const oldSpan = topbarText.querySelector("span");
+
+      index = (index + 1) % messages.length;
+      const newSpan = document.createElement("span");
+      newSpan.textContent = messages[index];
+      newSpan.style.position = "absolute";
+      newSpan.style.left = "0";
+      newSpan.style.right = "0";
+      newSpan.style.top = "0";
+      newSpan.style.transform = "translateY(-100%)";
+      newSpan.style.transition = "transform 0.4s ease-in-out";
+
+      topbarText.appendChild(newSpan);
+
+      // Force reflow to apply initial position
+      void newSpan.offsetHeight;
+
+      // Animate in and out
+      newSpan.style.transform = "translateY(0)";
+      oldSpan.style.transform = "translateY(100%)";
+
+      // Remove old span after transition ends
+      setTimeout(() => {
+        if (oldSpan && oldSpan.parentElement === topbarText) {
+          topbarText.removeChild(oldSpan);
+        }
+      }, 400); // matches transition duration
+    }
+
+    // Start loop every 5 seconds
+    setInterval(swapMessage, 5000);
+  });
+</script>
+
+
+
+<header class="header">
+  <div class="logo-nav">
+    <a href="index.html">
+  <img src="Lustra_Logo.png" width="100" height="70" alt="Lustra Logo" />
+</a>
+      </div>
+
+    <nav class="main-nav">
+      <ul>
+          <li class="has-dropdown">
+            <a href="#">NEW &amp; FEATURED</a>
+            <div class="mega-menu">
+            <div class="category">
+              <h3>New</h3>
+              <ul>
+              <li><a href="men.html">New for Men</a></li>
+              <li><a href="#">New for Women</a></li>
+              <li><a href="#">New for Kids</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>Featured</h3>
+              <ul>
+                <li><a href="#">Best Sellers</a></li>
+              <li><a href="#">Launch Calendar</a></li>
+              <li><a href="#">Lustra Stars</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>Shop Icons</h3>
+              <ul>
+                  <li><a href="#">KickStarter</a></li>
+              <li><a href="#">Lustra Shine</a></li>
+              <li><a href="#">Deviate</a></li>
+              </ul>
+            </div>
+        </li>
+
+          <li class="has-dropdown">
+           <a href="men.html">MENS</a>
+
+            <div class="mega-menu">
+            <div class="category">
+              <h3>Featured</h3>
+              <ul>
+              <li><a href="#">New Releases</a></li>
+              <li><a href="#">Best Sellers</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>By Style</h3>
+              <ul>
+               <li><a href="#">Sneakers</a></li>
+              <li><a href="#">Boots</a></li>
+              <li><a href="#">Loafers</a></li>
+              <li><a href="#">Sandals &amp; Slides</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>By Sports</h3>
+              <ul>
+                <li><a href="#">Football</a></li>
+              <li><a href="#">Running</a></li>
+              <li><a href="#">Basketball</a></li>
+              <li><a href="#">Training &amp; Gym</a></li>
+              <li><a href="#">Boxing</a></li>
+              <li><a href="#">Tennis</a></li>
+                <li><a href="#">Volleyball</a></li>
+              </ul>
+            </div>
+          </li>
+
+            <!-- Women -->
+          <li class="has-dropdown">
+              <a href="women.html">WOMENS</a>
+            <div class="mega-menu">
+            <div class="category">
+              <h3>Featured</h3>
+              <ul>
+              <li><a href="#">New Releases</a></li>
+              <li><a href="#">Best Sellers</a></li>
+              <li><a href="#">Retro Running Sneakers</a></li>
+               <li><a href="#">Lustra by You</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>By Style</h3>
+              <ul>
+              <li><a href="#">Sneakers</a></li>
+              <li><a href="#">Boots</a></li>
+              <li><a href="#">Loafers</a></li>
+              <li><a href="#">Sandals &amp; Slides</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>By Sports</h3>
+              <ul>
+              <li><a href="#">Yoga</a></li>
+              <li><a href="#">Tennis</a></li>
+              <li><a href="#">Running</a></li>
+              <li><a href="#">Football</a></li>
+              <li><a href="#">Golf</a></li>
+              <li><a href="#">Training &amp; Gym</a></li>
+              </ul>
+            </div>
+        </li>
+
+
+         <!-- Kids -->
+          <li class="has-dropdown">
+               <a href="kids.html">KIDS</a>
+            <div class="mega-menu">
+            <div class="category">
+              <h3>Featured</h3>
+              <ul>
+              <li><a href="#">New Releases</a></li>
+              <li><a href="#">Best Sellers</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>All Shoes</h3>
+              <ul>
+              <li><a href="#">Lifestyle</a></li>
+              <li><a href="#">Running</a></li>
+              <li><a href="#">Football</a></li>
+                      <li><a href="#">Basketball</a></li>
+                      <li><a href="#">Skateboarding</a></li>
+                      <li><a href="#">Lustra by You</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>Kids By Age</h3>
+              <ul>
+              <li><a href="#">Older Kids (7–15 years)</a></li>
+              <li><a href="#">Younger Kids (3–7 years)</a></li>
+              <li><a href="#">Babies &amp; Toddlers (0–3 years)</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>Collections</h3>
+              <ul>
+            <li><a href="#">LUSTRA x Doraemon</a></li>
+              <li><a href="#">LUSTRA x Harry Potter</a></li>
+              <li><a href="#">LUSTRA x Disney</a></li>
+                  </ul>
+            </div>
+        </li>
+
+
+          <!-- Sales -->
+          <li class="has-dropdown">
+            <a href="#">SALES</a>
+            <div class="mega-menu">
+            <div class="category">
+              <h3>Deals</h3>
+              <ul>
+              <li><a href="#">Under $50</a></li>
+              <li><a href="#">Under $100</a></li>
+              <li><a href="#">Clearance</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>Sale Seasons</h3>
+              <ul>
+              <li><a href="#">Up to 10% off</a></li>
+                <li><a href="#">Up to 20% off</a></li>
+                <li><a href="#">Up to 30% off</a></li>
+                <li><a href="#">Up to 40% off</a></li>
+                  <li><a href="#">All Sales</a></li>
+              </ul>
+            </div>
+
+        </li>
+      </ul>
+    </nav>
+
+
+ <div class="icons">
+      <div class="search-bar">
+        <input type="text" placeholder="Search" />
+        <i class="fa fa-search"></i>
+      </div>
+      <i class="fa-regular fa-user"></i>
+      <i class="fa-regular fa-heart"></i>
+      <i class="fa-solid fa-bag-shopping"></i>
+    </div>
+  </div>
+
+</header>
+
+
+      <!-- Secondary Notification Bar -->
+          <div class="topbar2">
+           Up to 20% Off * Selected Items
+        </div>
+
+
+
+
+   <body class="bg-white text-black">
+  <div class="container">
+    <div class="checkout-options">
+      <label><input type="radio" name="checkoutType" value="guest" checked> Guest Checkout</label>
+      <label><input type="radio" name="checkoutType" value="member"> Member Checkout</label>
+    </div>
+
+    <div class="section">
+      <h2>Product Summary</h2>
+      <div class="product">
+        <img src="LustraLab.png" alt="Lustra Lab">
+        <div class="product-details">
+          <h4>Lustra Lab</h4>
+          <p>Men's Shoes - Size 10</p>
+        </div>
+        <div class="price">$129.99</div>
+      </div>
+
+      <div class="product">
+        <img src="Deviate.png" alt="Deviate">
+        <div class="product-details">
+          <h4>Deviate</h4>
+          <p>Women's Shoes - Size 6.5</p>
+        </div>
+        <div class="price">$150</div>
+      </div>
+
+    </div>
+
+    <div id="memberForm" class="section hidden">
+      <h2>Member Login</h2>
+      <div class="input-group">
+        <label for="member-email">Email</label>
+        <input type="email" id="member-email" placeholder="you@email.com">
+      </div>
+      <div class="input-group">
+        <label for="member-password">Password</label>
+        <input type="password" id="member-password" placeholder="••••••••">
+      </div>
+      <button class="btn">Login and Continue</button>
+    </div>
+
+    <div id="guestForm">
+      <div class="section">
+        <h2>Delivery Information</h2>
+        <div class="input-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="John Doe">
+        </div>
+        <div class="input-group">
+          <label for="address">Address</label>
+          <input type="text" id="address" placeholder="123 Campsie Street">
+        </div>
+        <div class="input-group">
+          <label for="city">City</label>
+          <input type="text" id="city" placeholder="Portland">
+        </div>
+        <div class="input-group">
+          <label for="zip">ZIP Code</label>
+          <input type="text" id="zip" placeholder="97201">
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Payment Method</h2>
+        <div class="input-group">
+          <label for="card">Credit Card Number</label>
+          <input type="text" id="card" placeholder="1234 5678 9012 3456">
+        </div>
+        <div class="input-group">
+          <label for="expiry">Expiration Date</label>
+          <input type="text" id="expiry" placeholder="MM/YY">
+        </div>
+        <div class="input-group">
+          <label for="cvv">CVV</label>
+          <input type="text" id="cvv" placeholder="123">
+        </div>
+      </div>
+
+      <button class="btn">Complete Purchase</button>
+    </div>
+  </div>
+
+<script>
+  const guestForm = document.getElementById('guestForm');
+  const memberForm = document.getElementById('memberForm');
+  const radioButtons = document.querySelectorAll('input[name="checkoutType"]');
+
+  radioButtons.forEach(radio => {
+    radio.addEventListener('change', () => {
+      if (radio.value === 'guest') {
+        guestForm.classList.remove('hidden');
+        memberForm.classList.add('hidden');
+      } else {
+        guestForm.classList.add('hidden');
+        memberForm.classList.remove('hidden');
+      }
+    });
+  });
+
+  function showFieldMessage(inputId, message, isError = true) {
+    const input = document.getElementById(inputId);
+    let msgBox = input.nextElementSibling;
+
+    if (!msgBox || !msgBox.classList.contains('field-message')) {
+      msgBox = document.createElement('div');
+      msgBox.classList.add('field-message');
+      msgBox.style.marginTop = '5px';
+      msgBox.style.fontSize = '13px';
+      input.parentNode.appendChild(msgBox);
+    }
+
+    msgBox.textContent = message;
+    msgBox.style.color = isError ? '#cc0000' : '#006600';
+  }
+
+  function clearFieldMessages() {
+    document.querySelectorAll('.field-message').forEach(msg => msg.remove());
+  }
+
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  function validateCardNumber(card) {
+    return /^\d{16}$/.test(card.replace(/\s+/g, ''));
+  }
+
+  function validateCVV(cvv) {
+    return /^\d{3}$/.test(cvv);
+  }
+
+  function validateExpiry(expiry) {
+    return /^(0[1-9]|1[0-2])\/(\d{2})$/.test(expiry);
+  }
+
+  document.querySelector('#guestForm .btn').addEventListener('click', (e) => {
+    e.preventDefault();
+    clearFieldMessages();
+
+    const name = document.getElementById('name').value.trim();
+    const address = document.getElementById('address').value.trim();
+    const city = document.getElementById('city').value.trim();
+    const zip = document.getElementById('zip').value.trim();
+    const card = document.getElementById('card').value.trim();
+    const expiry = document.getElementById('expiry').value.trim();
+    const cvv = document.getElementById('cvv').value.trim();
+
+    let hasError = false;
+
+    if (!name) { showFieldMessage('name', 'Full name is required.'); hasError = true; }
+    if (!address) { showFieldMessage('address', 'Address is required.'); hasError = true; }
+    if (!city) { showFieldMessage('city', 'City is required.'); hasError = true; }
+    if (!zip) { showFieldMessage('zip', 'ZIP Code is required.'); hasError = true; }
+    if (!card || !validateCardNumber(card)) {
+      showFieldMessage('card', 'Enter a valid 16-digit card number.');
+      hasError = true;
+    }
+    if (!expiry || !validateExpiry(expiry)) {
+      showFieldMessage('expiry', 'Use MM/YY format for expiration.');
+      hasError = true;
+    }
+    if (!cvv || !validateCVV(cvv)) {
+      showFieldMessage('cvv', 'Enter a valid 3-digit CVV.');
+      hasError = true;
+    }
+
+    if (!hasError) {
+      showFieldMessage('card', 'Guest checkout successful!', false);
+    }
+  });
+
+  document.querySelector('#memberForm .btn').addEventListener('click', (e) => {
+    e.preventDefault();
+    clearFieldMessages();
+
+    const email = document.getElementById('member-email').value.trim();
+    const password = document.getElementById('member-password').value.trim();
+
+    let hasError = false;
+
+    if (!email || !validateEmail(email)) {
+      showFieldMessage('member-email', 'Enter a valid email address.');
+      hasError = true;
+    }
+
+    if (!password) {
+      showFieldMessage('member-password', 'Password is required.');
+      hasError = true;
+    }
+
+    if (!hasError) {
+      showFieldMessage('member-password', 'Logged in as member!', false);
+    }
+  });
+</script>
+
+
+
+
+</body>
+
+</html>
+
+
