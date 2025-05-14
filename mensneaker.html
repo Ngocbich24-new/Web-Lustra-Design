@@ -9,293 +9,273 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <style>
-
-
-  body {
-  font-family: 'Inter', sans-serif;
-  margin: 0;
-  padding: 1.5rem;
-  background-color: #fff;
-  color: #000;
-}
-
-.breadcrumb {
-  font-size: 14px;
-  color: #777;
-  margin-bottom: 1rem;
-}
-
-.breadcrumb a {
-  color: #000;
-  text-decoration: none;
-}
-
-.breadcrumb span {
-  margin: 0 5px;
-}
-
-.breadcrumb .current {
-  font-weight: bold;
-  color: #000;
-}
-
-.page-header h1 {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-}
-
-.filter {
-  position: relative;
-  margin: 0 6px;
-  font-size: 14px;
-  display: inline-block;
-}
-
-.filter-select {
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  background: #fff;
-  border-radius: 4px;
-  cursor: pointer;
-  user-select: none;
-  display: flex;
-  align-items: center;
-  width: fit-content;
-  justify-content: flex-start;
-  gap: 8px;
-}
-
-.filter-select i {
-  margin-left: 8px;
-  transition: transform 0.2s ease;
-}
-
-.filter.open .filter-select i {
-  transform: rotate(180deg);
-}
-
-.custom-options {
-  position: absolute;
-  top: 110%;
-  left: 0;
-  background: #fff;
-  border: 1px solid #000;
-  padding: 8px;
-  z-index: 10;
-  display: none;
-  flex-direction: column;
-  border-radius: 4px;
-  min-width: 150px;
-}
-
-.filter.open .custom-options {
-  display: flex;
-}
-
-.custom-options label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 6px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.custom-options label:hover {
-  background-color: #f0f0f0;
-}
-
-.checkbox {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  border: 1px solid #000;
-  text-align: center;
-  line-height: 16px;
-  font-size: 12px;
-  cursor: pointer;
-  user-select: none;
-  background: #fff;
-}
-
-.checkbox.checked {
-  background: #000;
-  color: #fff;
-}
-
-
-.filter-bar {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-  padding: 1rem 0;
-  margin-bottom: 1rem;
-}
-
-.filters-left select,
-.filters-right select {
-  padding: 8px 12px;
-  margin: 0 6px;
-  border: 1px solid #ccc;
-  background: #fff;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-.filters-left i {
-  margin-right: 10px;
-  font-size: 16px;
-}
-
-.filters-left .more-filters {
-  margin-left: 8px;
-  font-size: 13px;
-  color: #111;
-  text-transform: uppercase;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.filters-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  position: relative;
-}
-
-
-.active-tags {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px; /* slightly smaller gap */
-  margin-top: 0.75rem; /* reduce spacing from filters */
-  margin-bottom: 4rem;
-}
-
-.tag-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px; /* smaller gap between tags */
-  flex-grow: 1;
-}
-
-.tag {
-  background: #fafafa;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 3px 8px; /* smaller padding */
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 13px; /* smaller text */
-}
-
-.tag .remove-tag {
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 12px;
-}
-
-.clear-all {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 13px;
-  border-bottom: 1px solid #000;
-}
-
-
-
-.sort-filter {
-  position: relative;
-}
-
-.sort-filter .filter-select {
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  background: #fff;
-  border-radius: 4px;
-  cursor: pointer;
-  user-select: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: fit-content;
-}
-
-.sort-filter .filter-select i {
-  transition: transform 0.2s ease;
-}
-
-.sort-filter.open .filter-select i {
-  transform: rotate(180deg);
-}
-
-.sort-filter .custom-options {
-  position: absolute;
-  top: 100%;
-  right: 0;              /* align right edge of box with trigger */
-  left: auto;            /* override default */
-  background: #fff;
-  border: 1px solid #000;
-  border-radius: 4px;
-  padding: 8px 0;
-  display: none;
-  flex-direction: column;
-  z-index: 100;
-  width: fit-content;
-  white-space: nowrap;
-  margin-top: 4px;
-    padding: 0; /* Remove default vertical padding */
-      overflow: hidden; /* Ensures children (first/last) sit flush */
-}
-
-.sort-filter.open .custom-options {
-  display: flex;
-}
-
-.sort-filter .custom-options .option {
-  padding: 8px 12px;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.sort-filter .custom-options .option:hover {
-  background-color: #f0f0f0;
-}
-
-.sort-filter .custom-options .sort-option {
-  padding: 3px;           /* More padding for line spacing */
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-  line-height: 1.6;             /* Adjusts vertical spacing */
-}
-
-.sort-filter .custom-options .sort-option:hover {
-  background-color: #3a3a3a;
-  color: #fff;
-}
-
-
-
-.product-count {
-  font-size: 16px;
-  font-weight: 700;
-  margin: 1rem 0;
-}
-
-</style>
 
 </head>
+
+
+        <!-- Top bar -->
+<div class="topbar1" id="topbar-message">
+  <div class="topbar-text">
+    <span>FREE SHIPPING &amp; FREE RETURN</span>
+  </div>
+</div>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const topbarText = document.querySelector(".topbar-text");
+    const messages = [
+      "FREE SHIPPING & FREE RETURN",
+      "BECOME A MEMBER. Get rewards!"
+    ];
+    let index = 0;
+
+    function swapMessage() {
+      const oldSpan = topbarText.querySelector("span");
+
+      index = (index + 1) % messages.length;
+      const newSpan = document.createElement("span");
+      newSpan.textContent = messages[index];
+      newSpan.style.position = "absolute";
+      newSpan.style.left = "0";
+      newSpan.style.right = "0";
+      newSpan.style.top = "0";
+      newSpan.style.transform = "translateY(-100%)";
+      newSpan.style.transition = "transform 0.4s ease-in-out";
+
+      topbarText.appendChild(newSpan);
+
+      // Force reflow to apply initial position
+      void newSpan.offsetHeight;
+
+      // Animate in and out
+      newSpan.style.transform = "translateY(0)";
+      oldSpan.style.transform = "translateY(100%)";
+
+      // Remove old span after transition ends
+      setTimeout(() => {
+        if (oldSpan && oldSpan.parentElement === topbarText) {
+          topbarText.removeChild(oldSpan);
+        }
+      }, 400); // matches transition duration
+    }
+
+    // Start loop every 5 seconds
+    setInterval(swapMessage, 5000);
+  });
+</script>
+
+
+
+<header class="header">
+  <div class="logo-nav">
+    <a href="index.html">
+  <img src="Lustra_Logo.png" width="100" height="70" alt="Lustra Logo" />
+</a>
+      </div>
+
+    <nav class="main-nav">
+      <ul>
+          <li class="has-dropdown">
+            <a href="#">NEW &amp; FEATURED</a>
+            <div class="mega-menu">
+            <div class="category">
+              <h3>New</h3>
+              <ul>
+              <li><a href="men.html">New for Men</a></li>
+              <li><a href="women.html">New for Women</a></li>
+              <li><a href="kids.html">New for Kids</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>Featured</h3>
+              <ul>
+                <li><a href="#">Best Sellers</a></li>
+              <li><a href="#">Launch Calendar</a></li>
+              <li><a href="#">Lustra Stars</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>Shop Icons</h3>
+              <ul>
+                  <li><a href="#">KickStarter</a></li>
+              <li><a href="#">Lustra Shine</a></li>
+              <li><a href="#">Deviate</a></li>
+              </ul>
+            </div>
+        </li>
+
+          <li class="has-dropdown">
+             <a href="men.html">MENS</a>
+            <div class="mega-menu">
+            <div class="category">
+              <h3>Featured</h3>
+              <ul>
+              <li><a href="#">New Releases</a></li>
+              <li><a href="#">Best Sellers</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>By Style</h3>
+              <ul>
+               <li><a href="#">Sneakers</a></li>
+              <li><a href="#">Boots</a></li>
+              <li><a href="#">Loafers</a></li>
+              <li><a href="#">Sandals &amp; Slides</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>By Sports</h3>
+              <ul>
+               <li><a href="#">Football</a></li>
+              <li><a href="#">Running</a></li>
+              <li><a href="#">Basketball</a></li>
+              <li><a href="#">Training &amp; Gym</a></li>
+              <li><a href="#">Boxing</a></li>
+              <li><a href="#">Tennis</a></li>
+              <li><a href="#">Volleyball</a></li>
+              </ul>
+            </div>
+          </li>
+
+            <!-- Women -->
+          <li class="has-dropdown">
+             <a href="women.html">WOMENS</a>
+            <div class="mega-menu">
+            <div class="category">
+              <h3>Featured</h3>
+              <ul>
+              <li><a href="#">New Releases</a></li>
+              <li><a href="#">Best Sellers</a></li>
+              <li><a href="#">Retro Running Sneakers</a></li>
+               <li><a href="#">Lustra by You</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>By Style</h3>
+              <ul>
+              <li><a href="#">Sneakers</a></li>
+              <li><a href="#">Boots</a></li>
+              <li><a href="#">Loafers</a></li>
+              <li><a href="#">Sandals &amp; Slides</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>By Sports</h3>
+              <ul>
+              <li><a href="#">Yoga</a></li>
+              <li><a href="#">Tennis</a></li>
+              <li><a href="#">Running</a></li>
+              <li><a href="#">Football</a></li>
+              <li><a href="#">Golf</a></li>
+              <li><a href="#">Training &amp; Gym</a></li>
+              </ul>
+            </div>
+        </li>
+
+
+         <!-- Kids -->
+          <li class="has-dropdown">
+             <a href="kids.html">KIDS</a>
+            <div class="mega-menu">
+            <div class="category">
+              <h3>Featured</h3>
+              <ul>
+              <li><a href="#">New Releases</a></li>
+              <li><a href="#">Best Sellers</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>All Shoes</h3>
+              <ul>
+              <li><a href="#">Lifestyle</a></li>
+              <li><a href="#">Running</a></li>
+              <li><a href="#">Football</a></li>
+                      <li><a href="#">Basketball</a></li>
+                      <li><a href="#">Skateboarding</a></li>
+                      <li><a href="#">Lustra by You</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>Kids By Age</h3>
+              <ul>
+              <li><a href="#">Older Kids (7–15 years)</a></li>
+              <li><a href="#">Younger Kids (3–7 years)</a></li>
+              <li><a href="#">Babies &amp; Toddlers (0–3 years)</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>Collections</h3>
+              <ul>
+            <li><a href="#">LUSTRA x Doraemon</a></li>
+              <li><a href="#">LUSTRA x Harry Potter</a></li>
+              <li><a href="#">LUSTRA x Disney</a></li>
+                  </ul>
+            </div>
+        </li>
+
+
+          <!-- Sales -->
+          <li class="has-dropdown">
+            <a href="#">SALES</a>
+            <div class="mega-menu">
+            <div class="category">
+              <h3>Deals</h3>
+              <ul>
+              <li><a href="#">Under $50</a></li>
+              <li><a href="#">Under $100</a></li>
+              <li><a href="#">Clearance</a></li>
+              </ul>
+            </div>
+
+            <div class="category">
+              <h3>Sale Seasons</h3>
+              <ul>
+              <li><a href="#">Up to 10% off</a></li>
+                <li><a href="#">Up to 20% off</a></li>
+                <li><a href="#">Up to 30% off</a></li>
+                <li><a href="#">Up to 40% off</a></li>
+                  <li><a href="#">All Sales</a></li>
+              </ul>
+            </div>
+
+        </li>
+      </ul>
+    </nav>
+
+
+ <div class="icons">
+      <div class="search-bar">
+        <input type="text" placeholder="Search" />
+        <i class="fa fa-search"></i>
+      </div>
+      <i class="fa-regular fa-user"></i>
+      <i class="fa-regular fa-heart"></i>
+<a href="shoppingbag.html" class="shoppingbag-link">
+  <i class="fa-solid fa-bag-shopping"></i>
+</a>
+    </div>
+  </div>
+</header>
+
+
+
+
+      <!-- Secondary Notification Bar -->
+          <div class="topbar2">
+           Up to 20% Off * Selected Items
+        </div>
+
+
 <body>
 
   <!-- Breadcrumb -->

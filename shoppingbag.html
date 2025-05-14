@@ -367,6 +367,13 @@
   </div>
 </div>
 
+<div id="delete-success-msg" style="display: none;">
+  <div class="confirm-box">
+    <p>Item has been removed from your bag.</p>
+    <button id="undo-btn">Undo</button>
+  </div>
+</div>
+
 <script>
   const itemPrices = {
     0: { base: 160, sale: false },
@@ -375,6 +382,7 @@
   };
   const quantities = { 0: 1, 1: 1, 2: 1 };
   let pendingDelete = null;
+  let lastDeleted = null;
 
   function changeQuantity(id, delta) {
     if (!(id in quantities)) return;
@@ -426,20 +434,42 @@
   });
 
   // Confirm YES
+
   document.getElementById('confirm-yes').addEventListener('click', () => {
-    if (!pendingDelete) return;
-    const id = pendingDelete.dataset.id;
+  if (!pendingDelete) return;
+  const id = pendingDelete.dataset.id;
 
-    // Remove DOM element and update data
-    pendingDelete.remove();
-    delete quantities[id];
+  lastDeleted = {
+    element: pendingDelete,
+    id: id
+  };
 
-    // Hide overlay
-    document.getElementById('confirm-overlay').style.display = 'none';
+  pendingDelete.remove();
+  delete quantities[id];
+  document.getElementById('confirm-overlay').style.display = 'none';
+  updateCartTotal();
 
-    // Recalculate price and empty message
-    updateCartTotal();
-  });
+  const confirmMsg = document.getElementById('delete-success-msg');
+  confirmMsg.style.display = 'flex';
+
+  setTimeout(() => {
+    confirmMsg.style.display = 'none';
+    lastDeleted = null;
+  }, 4000);
+});
+  
+  document.getElementById('undo-btn').addEventListener('click', () => {
+  if (!lastDeleted) return;
+
+  const container = document.querySelector('.shoppingbag-items');
+  container.appendChild(lastDeleted.element);
+  quantities[lastDeleted.id] = 1;
+  updateCartTotal();
+
+  document.getElementById('delete-success-msg').style.display = 'none';
+  lastDeleted = null;
+});
+
 
   // Cancel deletion
   document.getElementById('confirm-no').addEventListener('click', () => {

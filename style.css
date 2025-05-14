@@ -1264,7 +1264,38 @@ body {
   z-index: 1000;
 }
 
+#delete-success-msg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
 
+#delete-success-msg .confirm-box {
+  background-color: #fff;
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+#undo-btn {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #000;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#undo-btn:hover {
+  background-color: #333;
+}
 
 .product-card-men:hover {
   border: 1px solid #e5e5e5;
@@ -1862,24 +1893,25 @@ body {
       font-weight: bold;
     }
 
-    #confirm-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    }
+    #confirm-overlay, #delete-confirmation {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
 
     #confirm-box {
-      background: white;
-      padding: 1.5rem 2rem;
-      border-radius: 8px;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    }
+      background-color: #fff;
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
 
     #confirm-box button {
       margin: 1rem 0.5rem 0;
@@ -1901,4 +1933,287 @@ body {
 .product-color,
 .item-details p {
   font-size: 12px;
+}
+
+
+
+.breadcrumb {
+  font-size: 15px;
+  color: #777;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  margin-left: 2rem;
+}
+
+.breadcrumb a {
+  color: #000;
+  text-decoration: none;
+}
+
+.breadcrumb span {
+  margin: 0 5px;
+}
+
+.breadcrumb .current {
+  font-weight: bold;
+  color: #000;
+}
+
+.page-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+  margin-left: 2rem;
+}
+
+.filter {
+  position: relative;
+  margin: 0 6px;
+  font-size: 14px;
+  display: inline-block;
+}
+
+.filter-select {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.filter-select i {
+  margin-left: 8px;
+  transition: transform 0.2s ease;
+}
+
+.filter.open .filter-select i {
+  transform: rotate(180deg);
+}
+
+.custom-options {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background: #fff;
+  border: 1px solid #000;
+  padding: 8px;
+  z-index: 10;
+  display: none;
+  flex-direction: column;
+  border-radius: 4px;
+  min-width: 150px;
+}
+
+.filter.open .custom-options {
+  display: flex;
+}
+
+.custom-options label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.custom-options label:hover {
+  background-color: #f0f0f0;
+}
+
+.checkbox {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #000;
+  text-align: center;
+  line-height: 16px;
+  font-size: 12px;
+  cursor: pointer;
+  user-select: none;
+  background: #fff;
+}
+
+.checkbox.checked {
+  background: #000;
+  color: #fff;
+}
+
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.filters-left select,
+.filters-right select {
+  padding: 8px 12px;
+  margin: 0 6px;
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.filters-left i {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.filters-left .more-filters {
+  margin-left: 8px;
+  font-size: 13px;
+  color: #111;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.filters-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+
+.active-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px; /* slightly smaller gap */
+  margin-top: 0.75rem; /* reduce spacing from filters */
+  margin-bottom: 4rem;
+  margin-left: 2rem;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px; /* smaller gap between tags */
+  flex-grow: 1;
+}
+
+.tag {
+  background: #fafafa;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 3px 8px; /* smaller padding */
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px; /* smaller text */
+}
+
+.tag .remove-tag {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.clear-all {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 13px;
+  border-bottom: 1px solid #000;
+  margin-right: 2rem;
+}
+
+
+
+.sort-filter {
+  position: relative;
+}
+
+.sort-filter .filter-select {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+}
+
+.sort-filter .filter-select i {
+  transition: transform 0.2s ease;
+}
+
+.sort-filter.open .filter-select i {
+  transform: rotate(180deg);
+}
+
+.sort-filter .custom-options {
+  position: absolute;
+  top: 100%;
+  right: 0;              /* align right edge of box with trigger */
+  left: auto;            /* override default */
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 8px 0;
+  display: none;
+  flex-direction: column;
+  z-index: 100;
+  width: fit-content;
+  white-space: nowrap;
+  margin-top: 4px;
+    padding: 0; /* Remove default vertical padding */
+      overflow: hidden; /* Ensures children (first/last) sit flush */
+}
+
+.sort-filter.open .custom-options {
+  display: flex;
+}
+
+.sort-filter .custom-options .option {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.sort-filter .custom-options .option:hover {
+  background-color: #f0f0f0;
+}
+
+.sort-filter .custom-options .sort-option {
+  padding: 3px;           /* More padding for line spacing */
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  line-height: 1.6;             /* Adjusts vertical spacing */
+}
+
+.sort-filter .custom-options .sort-option:hover {
+  background-color: #3a3a3a;
+  color: #fff;
+}
+
+
+
+.product-count {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 1rem 0;
 }
