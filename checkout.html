@@ -123,6 +123,99 @@
       display: none;
     }
 
+    .confirmation-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirmation-box {
+  background: #fff;
+  border: 2px solid #000;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 400px;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+.confirmation-box h3 {
+  margin-top: 0;
+  font-size: 1.4rem;
+  color: #111;
+}
+
+.confirmation-box p {
+  font-size: 1rem;
+  color: #333;
+  margin-top: 0.5rem;
+}
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+}
+
+.confirmation-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirmation-box {
+  background: #fff;
+  border: 2px solid #000;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 400px;
+  position: relative;
+}
+
+.confirmation-box h3 {
+  margin-top: 0;
+  font-size: 1.4rem;
+  color: #111;
+}
+
+.confirmation-box p {
+  font-size: 1rem;
+  color: #333;
+  margin-top: 0.5rem;
+}
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+}
+
 
   </style>
 
@@ -443,24 +536,44 @@
 
     <div id="guestForm">
       <div class="section">
-        <h2>Delivery Information</h2>
-        <div class="input-group">
-          <label for="name">Full Name</label>
-          <input type="text" id="name" placeholder="John Doe">
-        </div>
-        <div class="input-group">
-          <label for="address">Address</label>
-          <input type="text" id="address" placeholder="123 Campsie Street">
-        </div>
-        <div class="input-group">
-          <label for="city">City</label>
-          <input type="text" id="city" placeholder="Portland">
-        </div>
-        <div class="input-group">
-          <label for="zip">ZIP Code</label>
-          <input type="text" id="zip" placeholder="97201">
-        </div>
-      </div>
+              <h2>Delivery Information</h2>
+
+              <div class="input-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="John Doe">
+              </div>
+
+              <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="you@example.com">
+              </div>
+
+              <div class="input-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" placeholder="123 Campsie Street">
+              </div>
+
+              <div class="input-group">
+                <label for="suburb">Suburb</label>
+                <input type="text" id="suburb" placeholder="Waterloo">
+              </div>
+
+              <div class="input-group">
+                <label for="state">State</label>
+                <input type="text" id="state" placeholder="NSW">
+              </div>
+
+              <div class="input-group">
+                <label for="zip">ZIP Code</label>
+                <input type="text" id="zip" placeholder="2000">
+              </div>
+
+              <div class="input-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" placeholder="0412345678">
+              </div>
+            </div>
+
 
       <div class="section">
         <h2>Payment Method</h2>
@@ -482,6 +595,22 @@
     </div>
   </div>
 
+  <div id="confirmation-modal" class="confirmation-modal">
+  <div class="confirmation-box">
+    <button class="close-btn" onclick="closeConfirmation()">&times;</button>
+    <h3>Order Confirmed</h3>
+    <p>Your order has been successfully placed. A confirmation email has been sent to you.</p>
+  </div>
+</div>
+
+<div id="confirmation-modal" class="confirmation-modal">
+  <div class="confirmation-box">
+    <button class="close-btn" onclick="closeConfirmation()">&times;</button>
+    <h3 id="confirmation-title">Confirmation</h3>
+    <p id="confirmation-message">This is a confirmation message.</p>
+  </div>
+</div>
+
 <script>
   const guestForm = document.getElementById('guestForm');
   const memberForm = document.getElementById('memberForm');
@@ -502,7 +631,6 @@
   function showFieldMessage(inputId, message, isError = true) {
     const input = document.getElementById(inputId);
     let msgBox = input.nextElementSibling;
-
     if (!msgBox || !msgBox.classList.contains('field-message')) {
       msgBox = document.createElement('div');
       msgBox.classList.add('field-message');
@@ -510,91 +638,138 @@
       msgBox.style.fontSize = '13px';
       input.parentNode.appendChild(msgBox);
     }
-
     msgBox.textContent = message;
     msgBox.style.color = isError ? '#cc0000' : '#006600';
   }
 
-  function clearFieldMessages() {
-    document.querySelectorAll('.field-message').forEach(msg => msg.remove());
+  function clearFieldMessage(inputId) {
+    const input = document.getElementById(inputId);
+    const msgBox = input.nextElementSibling;
+    if (msgBox && msgBox.classList.contains('field-message')) {
+      msgBox.remove();
+    }
   }
 
-  function validateEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  }
+  // ✅ Validators
+  const validateName = name => /^[A-Za-z\s]+$/.test(name);
+  const validateEmail = email => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const validateCardNumber = card => /^\d{16}$/.test(card.replace(/\s+/g, ''));
+  const validateCVV = cvv => /^\d{3}$/.test(cvv);
+  const validateExpiry = expiry => /^(0[1-9]|1[0-2])\/(\d{2})$/.test(expiry);
+  const validateAddress = address => /\d/.test(address) && /[A-Za-z]/.test(address);
+  const validateZip = zip => /^\d{1,10}$/.test(zip);
+  const validatePhone = phone => /^\d{8,15}$/.test(phone.replace(/\s+/g, ''));
+  const validateSuburb = suburb => /^[A-Za-z\s]+$/.test(suburb);
+const validateState = state => /^[A-Za-z\s]+$/.test(state);
 
-  function validateCardNumber(card) {
-    return /^\d{16}$/.test(card.replace(/\s+/g, ''));
-  }
+function validateField(inputId, validator, message, label = null) {
+  const input = document.getElementById(inputId);
+  const fieldLabel = label || input.placeholder || inputId;
 
-  function validateCVV(cvv) {
-    return /^\d{3}$/.test(cvv);
-  }
+  input.addEventListener('input', () => {
+    const value = input.value.trim();
+    clearFieldMessage(inputId);
+    if (!value) {
+      showFieldMessage(inputId, `${fieldLabel} is required.`);
+    } else if (!validator(value)) {
+      showFieldMessage(inputId, message);
+    }
+  });
+}
 
-  function validateExpiry(expiry) {
-    return /^(0[1-9]|1[0-2])\/(\d{2})$/.test(expiry);
-  }
 
+
+ // 👤 Guest validations
+validateField('name', validateName, 'Name should only include letters and spaces.', 'Full Name');
+validateField('email', validateEmail, 'Email must include "@" and a domain.', 'Email');
+validateField('address', validateAddress, 'Address must include both number and street name.', 'Address');
+validateField('suburb', validateSuburb, 'Suburb should only include letters.', 'Suburb');
+validateField('state', validateState, 'State should only include letters.', 'State');
+
+validateField('zip', validateZip, 'ZIP Code must be up to 10 digits only.', 'ZIP Code');
+validateField('phone', validatePhone, 'Phone number must be 8–15 digits only.', 'Phone Number');
+validateField('card', validateCardNumber, 'Enter a valid 16-digit card number.', 'Credit Card Number');
+validateField('expiry', validateExpiry, 'Use MM/YY format for expiration.', 'Expiration Date');
+validateField('cvv', validateCVV, 'Enter a valid 3-digit CVV.', 'CVV');
+validateField('member-email', validateEmail, 'Email must include "@" and be valid.', 'Email');
+
+
+
+  // ✅ Confirmation on valid submission
   document.querySelector('#guestForm .btn').addEventListener('click', (e) => {
     e.preventDefault();
-    clearFieldMessages();
-
-    const name = document.getElementById('name').value.trim();
-    const address = document.getElementById('address').value.trim();
-    const city = document.getElementById('city').value.trim();
-    const zip = document.getElementById('zip').value.trim();
-    const card = document.getElementById('card').value.trim();
-    const expiry = document.getElementById('expiry').value.trim();
-    const cvv = document.getElementById('cvv').value.trim();
+       const requiredFields = [
+      { id: 'name', validator: validateName },
+      { id: 'email', validator: validateEmail },
+      { id: 'address', validator: validateAddress },
+      { id: 'suburb', validator: val => val.length > 0 },
+      { id: 'state', validator: val => val.length > 0 },
+      { id: 'zip', validator: validateZip },
+      { id: 'phone', validator: validatePhone },
+      { id: 'card', validator: validateCardNumber },
+      { id: 'expiry', validator: validateExpiry },
+      { id: 'cvv', validator: validateCVV }
+    ];
 
     let hasError = false;
+    clearFieldMessage('card'); // Clear old success message if any
 
-    if (!name) { showFieldMessage('name', 'Full name is required.'); hasError = true; }
-    if (!address) { showFieldMessage('address', 'Address is required.'); hasError = true; }
-    if (!city) { showFieldMessage('city', 'City is required.'); hasError = true; }
-    if (!zip) { showFieldMessage('zip', 'ZIP Code is required.'); hasError = true; }
-    if (!card || !validateCardNumber(card)) {
-      showFieldMessage('card', 'Enter a valid 16-digit card number.');
-      hasError = true;
-    }
-    if (!expiry || !validateExpiry(expiry)) {
-      showFieldMessage('expiry', 'Use MM/YY format for expiration.');
-      hasError = true;
-    }
-    if (!cvv || !validateCVV(cvv)) {
-      showFieldMessage('cvv', 'Enter a valid 3-digit CVV.');
-      hasError = true;
-    }
+    requiredFields.forEach(field => {
+      const input = document.getElementById(field.id);
+      const val = input.value.trim();
+      if (!val || !field.validator(val)) {
+        showFieldMessage(field.id, input.placeholder + ' is invalid.');
+        hasError = true;
+      }
+    });
 
     if (!hasError) {
-      showFieldMessage('card', 'Guest checkout successful!', false);
+showConfirmation("Thank you! Your purchase has been completed.");
     }
   });
 
-  document.querySelector('#memberForm .btn').addEventListener('click', (e) => {
-    e.preventDefault();
-    clearFieldMessages();
+ document.querySelector('#memberForm .btn').addEventListener('click', e => {
+  e.preventDefault();
+  clearFieldMessage('member-email');
+  clearFieldMessage('member-password');
 
-    const email = document.getElementById('member-email').value.trim();
-    const password = document.getElementById('member-password').value.trim();
+  const email = document.getElementById('member-email').value.trim();
+  const password = document.getElementById('member-password').value.trim();
 
-    let hasError = false;
+  let hasError = false;
 
-    if (!email || !validateEmail(email)) {
-      showFieldMessage('member-email', 'Enter a valid email address.');
-      hasError = true;
-    }
+  if (!email) {
+    showFieldMessage('member-email', 'Email is required.');
+    hasError = true;
+  } else if (!validateEmail(email)) {
+    showFieldMessage('member-email', 'Email must include "@" and be valid.');
+    hasError = true;
+  }
 
-    if (!password) {
-      showFieldMessage('member-password', 'Password is required.');
-      hasError = true;
-    }
+  if (!password) {
+    showFieldMessage('member-password', 'Password is required.');
+    hasError = true;
+  }
 
-    if (!hasError) {
-      showFieldMessage('member-password', 'Logged in as member!', false);
-    }
-  });
+  if (!hasError) {
+showConfirmation("Logged in successfully as a member!");
+
+  }
+});
+
+
+function showConfirmation(message = "Your order has been successfully placed.") {
+  const modal = document.getElementById('confirmation-modal');
+  modal.querySelector('p').innerText = message;
+  modal.style.display = 'flex';
+}
+
+function closeConfirmation() {
+  document.getElementById('confirmation-modal').style.display = 'none';
+}
+
 </script>
+
 
 
 
