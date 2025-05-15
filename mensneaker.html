@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sneakers | Lustra</title>
+  <title>Men Sneakers | Lustra</title>
   <link rel="icon" type="image/x-icon" href="LustraLogoFavicon.png">
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
@@ -268,9 +268,6 @@
   </div>
 </header>
 
-
-
-
       <!-- Secondary Notification Bar -->
           <div class="topbar2">
            Up to 20% Off * Selected Items
@@ -296,6 +293,10 @@
   </div>
 
   <!-- Filters and Sorting -->
+
+
+  <div class="sticky-filter-wrapper">
+
   <div class="filter-bar">
     <div class="filters-left">
 
@@ -393,15 +394,35 @@
 </div>
 </div>
 
-
-
-<!--Tag Container (OUTSIDE filter-bar) -->
-<div class="active-tags" id="active-tags">
-  <div class="tag-list" id="tag-list"></div>
-  <div class="clear-all" id="clear-all-tag" style="display: none;" onclick="clearAllTags()">
-    CLEAR ALL <span class="remove-tag">×</span>
+  <div class="active-tags" id="active-tags">
+    <div class="tag-list" id="tag-list"></div>
+    <div class="clear-all" id="clear-all-tag" style="display: none;" onclick="clearAllTags()">
+      CLEAR ALL <span class="remove-tag">×</span>
+    </div>
   </div>
+  
 </div>
+
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const tagBar = document.querySelector('.active-tags');
+    const filterBar = document.querySelector('.filter-bar');
+    const triggerPoint = tagBar.offsetTop;
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY >= triggerPoint) {
+        tagBar.classList.add('sticky');
+        filterBar.classList.add('sticky');
+        document.body.classList.add('body-padding');
+      } else {
+        tagBar.classList.remove('sticky');
+        filterBar.classList.remove('sticky');
+        document.body.classList.remove('body-padding');
+      }
+    });
+  });
+</script>
 
 
 <script>
@@ -502,21 +523,32 @@
 
 
 
-  <!-- Product count -->
-  <div class="product-count">
-    <strong>145 PRODUCTS</strong>
-  </div>
+<!-- Product count -->
+<div class="product-count">
+  <strong id="productTotal">Loading...</strong>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const productCards = document.querySelectorAll(".product-card-men");
+    const countElement = document.getElementById("productTotal");
+    countElement.textContent = `${productCards.length} PRODUCTS`;
+  });
+</script>
+
+
 
  <section class="product-grid-men">
 
         <div class="product-card-men">
           <div class="image-container">
-            <img src="StreetWave.png" alt="Street Wave Shoes" height="250" width="250">
+            <img src="PrimeLace.png" alt="Prime Lace" height="250" width="250">
             <i class="fa-regular fa-heart wishlist-icon" onclick="addToWishlist(this)"></i>
           </div>
+          <p class="status">Just in</p>
           <h3>Street Wave</h3>
-          <p class="category">Unisex</p>
-          <p class="price">$170</p>
+          <p class="category">Men's Sneakers</p>
+          <p class="price">$175</p>
         </div>
 
     <div class="product-card-men">
@@ -526,6 +558,7 @@
                 width="250">
             <i class="fa-regular fa-heart wishlist-icon" onclick="addToWishlist(this)"></i>
           </div>
+        <p class="status">SALE</p>
       <h3>Blitz Speed</h3>
       <p class="category">Unisex</p>
       <p class="price">$165</p>
@@ -550,8 +583,9 @@
                 width="250">
               <i class="fa-regular fa-heart wishlist-icon" onclick="addToWishlist(this)"></i>
           </div>
+      <p class="status">Just in</p>
       <h3>Lus 3.2 Training Shoes</h3>
-      <p class="category">Women</p>
+      <p class="category">Men's Sneaker</p>
       <p class="price">$160</p>
     </div>
 
@@ -561,136 +595,144 @@
             <i class="fa-regular fa-heart wishlist-icon" onclick="addToWishlist(this)"></i>
           </div>
           <h3>Street Wave</h3>
-          <p class="category">Unisex</p>
+          <p class="category">Men's Sneaker</p>
           <p class="price">$170</p>
         </div>
 
     <div class="product-card-men">
        <div class="image-container">
-      <img src="BlitzSpeed.png" alt="Blitz Speed"
+      <img src="RetroRunner.png" alt="Retro Runner"
                  height="250"
                 width="250">
             <i class="fa-regular fa-heart wishlist-icon" onclick="addToWishlist(this)"></i>
           </div>
-      <h3>Blitz Speed</h3>
-      <p class="category">Unisex</p>
-      <p class="price">$165</p>
+      <p class="status">Just in</p>
+      <h3>Retro Runner</h3>
+      <p class="category">Men's Sneaker</p>
+      <p class="price">$155</p>
     </div>
 
     <div class="product-card-men">
          <div class="image-container">
-      <img src="EasyRiderElevated.png"  alt="Kickstarter Shoes"
+      <img src="Deviate.png"  alt="Kickstarter Shoes"
                  height="250"
                 width="250">
               <i class="fa-regular fa-heart wishlist-icon" onclick="addToWishlist(this)"></i>
           </div>
-      <h3>Easy Rider Elevated Sneakers</h3>
-      <p class="category">Men</p>
+      <p class="status">Just in</p>
+      <h3>Kickstarter Low</h3>
+      <p class="category">Men's Sneaker</p>
       <p class="price">$160</p>
     </div>
 
     <div class="product-card-men">
          <div class="image-container">
-      <img src="KickStarter.png"  alt="Kickstarter Shoes"
+      <img src="AeroMax.png"  alt="Aero Max Shoes"
                  height="250"
                 width="250">
               <i class="fa-regular fa-heart wishlist-icon" onclick="addToWishlist(this)"></i>
           </div>
-      <h3>Lus 3.2 Training Shoes</h3>
-      <p class="category">Women</p>
-      <p class="price">$160</p>
+      <p class="status">Just in</p>
+      <h3>Aero Max</h3>
+      <p class="category">Men's Sneaker</p>
+      <p class="price">$150</p>
     </div>
 
      <div class="product-card-men">
           <div class="image-container">
-            <img src="StreetWave.png" alt="Street Wave Shoes" height="250" width="250">
+            <img src="EasyRider.png" alt="Easy Rider" height="250" width="250">
             <i class="fa-regular fa-heart wishlist-icon" onclick="addToWishlist(this)"></i>
           </div>
-          <h3>Street Wave</h3>
-          <p class="category">Unisex</p>
-          <p class="price">$170</p>
+          <p class="status">Just in</p>
+          <h3>Easy Rider</h3>
+          <p class="category">Men's Sneaker</p>
+          <p class="price">$160</p>
         </div>
 
     <div class="product-card-men">
        <div class="image-container">
-      <img src="BlitzSpeed.png" alt="Blitz Speed"
+      <img src="ZoomFlex.png" alt="Zoom Flex"
                  height="250"
                 width="250">
             <i class="fa-regular fa-heart wishlist-icon" onclick="addToWishlist(this)"></i>
           </div>
-      <h3>Blitz Speed</h3>
-      <p class="category">Unisex</p>
-      <p class="price">$165</p>
+      <h3>Zoom Flex</h3>
+      <p class="category">Men's Sneaker</p>
+      <p class="price">$180</p>
     </div>
 
     <div class="product-card-men">
          <div class="image-container">
-      <img src="EasyRiderElevated.png"  alt="Kickstarter Shoes"
+      <img src="SkyRunner.png"  alt="Sky Runner"
                  height="250"
                 width="250">
               <i class="fa-regular fa-heart wishlist-icon" onclick="addToWishlist(this)"></i>
           </div>
-      <h3>Easy Rider Elevated Sneakers</h3>
-      <p class="category">Men</p>
+      <p class="status">SALE</p>
+      <h3>Sky Runner</h3>
+      <p class="category">Men's Sneaker</p>
       <p class="price">$160</p>
     </div>
 
     <div class="product-card-men">
          <div class="image-container">
-      <img src="KickStarter.png"  alt="Kickstarter Shoes"
+      <img src="LustraGlide.png"  alt="LustraGlide"
                  height="250"
                 width="250">
               <i class="fa-regular fa-heart wishlist-icon" onclick="addToWishlist(this)"></i>
           </div>
-      <h3>Lus 3.2 Training Shoes</h3>
-      <p class="category">Women</p>
-      <p class="price">$160</p>
+      <p class="status">SALE</p>
+      <h3>Lustra Glide</h3>
+      <p class="category">Men's Sneaker</p>
+      <p class="price">$130</p>
     </div>
 
      <div class="product-card-men">
           <div class="image-container">
-            <img src="StreetWave.png" alt="Street Wave Shoes" height="250" width="250">
+            <img src="KickstarterBolt.png" alt="KickstarterBolt" height="250" width="250">
             <i class="fa-regular fa-heart wishlist-icon" onclick="addToWishlist(this)"></i>
           </div>
-          <h3>Street Wave</h3>
-          <p class="category">Unisex</p>
-          <p class="price">$170</p>
+          <p class="status">SALE</p>
+          <h3>Kickstarter Bolt</h3>
+          <p class="category">Men's Sneaker</p>
+          <p class="price">$180</p>
         </div>
 
     <div class="product-card-men">
        <div class="image-container">
-      <img src="BlitzSpeed.png" alt="Blitz Speed"
+      <img src="FlareForm.png" alt="FlareForm"
                  height="250"
                 width="250">
             <i class="fa-regular fa-heart wishlist-icon" onclick="addToWishlist(this)"></i>
           </div>
-      <h3>Blitz Speed</h3>
-      <p class="category">Unisex</p>
-      <p class="price">$165</p>
+      <h3>Flare Form</h3>
+      <p class="category">Men's Sneaker</p>
+      <p class="price">$185</p>
     </div>
 
     <div class="product-card-men">
          <div class="image-container">
-      <img src="EasyRiderElevated.png"  alt="Kickstarter Shoes"
+      <img src="EchoKnit.png"  alt="Echo Knit Shoes"
                  height="250"
                 width="250">
               <i class="fa-regular fa-heart wishlist-icon" onclick="addToWishlist(this)"></i>
           </div>
-      <h3>Easy Rider Elevated Sneakers</h3>
-      <p class="category">Men</p>
-      <p class="price">$160</p>
+      <h3>Echo Knit</h3>
+      <p class="category">Men's Sneaker</p>
+      <p class="price">$120</p>
     </div>
 
     <div class="product-card-men">
          <div class="image-container">
-      <img src="KickStarter.png"  alt="Kickstarter Shoes"
+      <img src="DeviateEdge.png"  alt="Deviate Edge"
                  height="250"
                 width="250">
               <i class="fa-regular fa-heart wishlist-icon" onclick="addToWishlist(this)"></i>
           </div>
-      <h3>Lus 3.2 Training Shoes</h3>
-      <p class="category">Women</p>
-      <p class="price">$160</p>
+      <p class="status">SALE</p>
+      <h3>Deviate Edge</h3>
+      <p class="category">Men's Sneaker</p>
+      <p class="price">$200</p>
     </div>
 
   </section>
@@ -742,6 +784,9 @@
     track.appendChild(card);
   });
 </script>
+
+
+
 <!-- Footer -->
         <section id="footer">
             <div class="container">

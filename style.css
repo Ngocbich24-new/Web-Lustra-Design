@@ -1341,12 +1341,20 @@ body {
 
 .product-card-men h3,
 .category,
-.price {
+.price,
+.status {
   margin-left: 0;
   padding-left: 0;
   text-align: left;
   margin-bottom: 10px;
 }
+
+.status {
+  font-weight: bold;
+  font-size: 12px;
+  color: red;
+}
+
 
 .product-card-men h3 {
   font-size: 15px;
@@ -1364,6 +1372,8 @@ body {
   font-weight: bold;
   font-size: 17px;
 }
+
+
 
 /* Lus Stars Hero Banner */
 .hero-lus-stars {
@@ -2256,4 +2266,38 @@ body {
   font-size: 20px;
   margin-left: 2rem;
   margin-bottom: 2rem;
+}
+
+
+/* Sticky styles for both bars */
+.active-tags.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  z-index: 1001;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.filter-bar.sticky {
+  position: fixed;
+  top: 40px; /* Height of active-tags (adjust if needed) */
+  left: 0;
+  right: 0;
+  background: white;
+  z-index: 1000;
+  padding: 1rem 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Push content down only when sticky is active */
+.body-padding {
+  margin-top: 140px; /* Adjust: active-tags (40px) + filter-bar (100px approx) */
+}
+
+.filter-bar,
+.active-tags {
+  transition: top 0.3s ease, box-shadow 0.3s ease;
 }
