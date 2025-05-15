@@ -3,13 +3,13 @@
 <html lang="en">
       <head>
         <title>Men Shoes | Lustra Offical Store</title>
+        <link rel="icon" type="image/x-icon" href="LustraLogoFavicon.png">
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <link rel="stylesheet" href="assets/css/main.css" />
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Michroma&display=swap" rel="stylesheet">
-        <link href="https://fonts.google.com/specimen/Oswald" rel="stylesheet">  
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+
 
 
       </head>
@@ -124,7 +124,7 @@
             <div class="category">
               <h3>By Style</h3>
               <ul>
-               <li><a href="#">Sneakers</a></li>
+               <li><a href="mensneaker.html">Sneakers</a></li>
               <li><a href="#">Boots</a></li>
               <li><a href="#">Loafers</a></li>
               <li><a href="#">Sandals &amp; Slides</a></li>
@@ -256,18 +256,21 @@
     </nav>
 
 
- <div class="icons">
-      <div class="search-bar">
-        <input type="text" placeholder="Search" />
-        <i class="fa fa-search"></i>
-      </div>
-      <i class="fa-regular fa-user"></i>
-      <i class="fa-regular fa-heart"></i>
-<a href="shoppingbag.html" class="shoppingbag-link">
-  <i class="fa-solid fa-bag-shopping"></i>
-</a>
-    </div>
+<div class="icons"> 
+  <div class="search-bar">
+    <input type="text" placeholder="Search" />
+    <i class="fa-solid fa-search"></i>
+  </div>
+  <i class="fa-solid fa-user"></i>
+  <i class="fa-solid fa-heart"></i>
+  <a href="shoppingbag.html" class="shoppingbag-link">
+    <i class="fa-solid fa-bag-shopping"></i>
+  </a>
+</div>
+
+
 </header>
+
 
 
 
@@ -363,29 +366,29 @@
 
         <div class="product-card-men">
           <div class="image-container">
-            <img src="LustraLab.png" alt="Lustra Lab Shoes" height="250" width="250">
+            <img src="StreetWave.png" alt="Street Wave Shoes" height="250" width="250">
             <i class="fa-regular fa-heart wishlist-icon" onclick="addToWishlist(this)"></i>
           </div>
-          <h3>Max Lus</h3>
+          <h3>Street Wave</h3>
           <p class="category">Unisex</p>
-          <p class="price">$260</p>
+          <p class="price">$170</p>
         </div>
 
     <div class="product-card-men">
        <div class="image-container">
-      <img src="Deviate.png" alt="Deviate Shoes"
+      <img src="BlitzSpeed.png" alt="Blitz Speed"
                  height="250"
                 width="250">
             <i class="fa-regular fa-heart wishlist-icon" onclick="addToWishlist(this)"></i>
           </div>
-      <h3>Kickstarter Low</h3>
-      <p class="category">Men</p>
-      <p class="price">$160</p>
+      <h3>Blitz Speed</h3>
+      <p class="category">Unisex</p>
+      <p class="price">$165</p>
     </div>
 
     <div class="product-card-men">
          <div class="image-container">
-      <img src="KickStarter.png"  alt="Kickstarter Shoes"
+      <img src="EasyRiderElevated.png"  alt="Kickstarter Shoes"
                  height="250"
                 width="250">
               <i class="fa-regular fa-heart wishlist-icon" onclick="addToWishlist(this)"></i>
@@ -403,7 +406,7 @@
               <i class="fa-regular fa-heart wishlist-icon" onclick="addToWishlist(this)"></i>
           </div>
       <h3>Lus 3.2 Training Shoes</h3>
-      <p class="category">Women</p>
+      <p class="category">Men</p>
       <p class="price">$160</p>
     </div>
   </section>
@@ -485,16 +488,16 @@
 </section>
 <script>
   const products = [
-    { name: "Max Lus", category: "Unisex", price: "$260", image: "LustraLab.png" },
+    { name: "Blitz Speed", category: "Unisex", price: "$165", image: "BlitzSpeed.png" },
+    { name: "Zoom Flex", category: "Men", price: "$180", image: "ZoomFlex.png" },
+    { name: "Street Wave", category: "Unisex", price: "$170", image: "StreetWave.png" },
+    { name: "Retro Runner", category: "Unisex", price: "$155", image: "RetroRunner.png" },
     { name: "Kickstarter Low", category: "Men", price: "$160", image: "Deviate.png" },
-    { name: "Easy Rider", category: "Men", price: "$160", image: "LustraLab.png" },
-    { name: "Lus 3.2", category: "Women", price: "$160", image: "LustraLab.png" },
-    { name: "Aero Max", category: "Men", price: "$150", image: "LustraLab.png" },
-    { name: "Street Wave", category: "Unisex", price: "$170", image: "Deviate.png" },
-    { name: "Zoom Flex", category: "Men", price: "$180", image: "LustraLab.png" },
-    { name: "Retro Runner", category: "Women", price: "$155", image: "Deviate.png" },
-    { name: "Blitz Speed", category: "Unisex", price: "$165", image: "Deviate.png" },
-    { name: "Prime Lace", category: "Men", price: "$175", image: "Deviate.png" },
+    { name: "Easy Rider", category: "Men", price: "$160", image: "EasyRider.png" },
+    { name: "Lus 3.2", category: "Unisex", price: "$160", image: "Lus3.2.png" },
+    { name: "Aero Max", category: "Men", price: "$150", image: "AeroMax.png" },
+    { name: "Prime Lace", category: "Men", price: "$175", image: "PrimeLace.png" },
+    { name: "Max Lus", category: "Unisex", price: "$260", image: "LustraLab.png" },
   ];
 
   const track = document.getElementById('carousel-track');

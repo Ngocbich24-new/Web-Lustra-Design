@@ -3,13 +3,12 @@
 <html lang="en">
       <head>
         <title>Women Shoes | Lustra Offical Store</title>
+        <link rel="icon" type="image/x-icon" href="LustraLogoFavicon.png">
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <link rel="stylesheet" href="assets/css/main.css" />
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Michroma&display=swap" rel="stylesheet">
-        <link href="https://fonts.google.com/specimen/Oswald" rel="stylesheet">  
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
 
 
       </head>
@@ -267,7 +266,6 @@
   <i class="fa-solid fa-bag-shopping"></i>
 </a>
     </div>
-  </div>
 </header>
 
 
@@ -283,7 +281,7 @@
 <div class="banner">
   <div class="slides" id="slides">
     <div class="slide">
-      <img src="slide6.png" height="200" alt="Slide 6">
+      <img src="slide7.png" height="200" alt="Slide 7">
     </div>
     <div class="slide">
       <img src="slide4.png" height="200" alt="Slide 4">
@@ -356,11 +354,23 @@
 
 
 
-      <!-- Women Top Products -->
+      <!-- Men Top Products -->
 
-      <h2 class="section-title-men">MEN</h2>
+      <h2 class="section-title-men">WOMEN</h2>
   
   <section class="product-grid-men">
+
+      <div class="product-card-men">
+         <div class="image-container">
+      <img src="KickStarter.png"  alt="Kickstarter Shoes"
+                 height="250"
+                width="250">
+              <i class="fa-regular fa-heart wishlist-icon" onclick="addToWishlist(this)"></i>
+          </div>
+      <h3>Lus 3.2 Training Shoes</h3>
+      <p class="category">Women</p>
+      <p class="price">$160</p>
+    </div>
 
         <div class="product-card-men">
           <div class="image-container">
@@ -374,39 +384,27 @@
 
     <div class="product-card-men">
        <div class="image-container">
-      <img src="Deviate.png" alt="Deviate Shoes"
+      <img src="PrimeLace.png" alt="Prime Lace"
                  height="250"
                 width="250">
             <i class="fa-regular fa-heart wishlist-icon" onclick="addToWishlist(this)"></i>
           </div>
-      <h3>Kickstarter Low</h3>
-      <p class="category">Men</p>
-      <p class="price">$160</p>
-    </div>
-
-    <div class="product-card-men">
-         <div class="image-container">
-      <img src="KickStarter.png"  alt="Kickstarter Shoes"
-                 height="250"
-                width="250">
-              <i class="fa-regular fa-heart wishlist-icon" onclick="addToWishlist(this)"></i>
-          </div>
-      <h3>Easy Rider Elevated Sneakers</h3>
-      <p class="category">Men</p>
-      <p class="price">$160</p>
-    </div>
-
-    <div class="product-card-men">
-         <div class="image-container">
-      <img src="KickStarter.png"  alt="Kickstarter Shoes"
-                 height="250"
-                width="250">
-              <i class="fa-regular fa-heart wishlist-icon" onclick="addToWishlist(this)"></i>
-          </div>
-      <h3>Lus 3.2 Training Shoes</h3>
+      <h3>Prime Lace</h3>
       <p class="category">Women</p>
-      <p class="price">$160</p>
+      <p class="price">$175</p>
     </div>
+
+    <div class="product-card-men">
+          <div class="image-container">
+            <img src="StreetWave.png" alt="Street Wave Shoes" height="250" width="250">
+            <i class="fa-regular fa-heart wishlist-icon" onclick="addToWishlist(this)"></i>
+          </div>
+          <h3>Street Wave</h3>
+          <p class="category">Unisex</p>
+          <p class="price">$170</p>
+        </div>
+
+    
   </section>
 
     <section class="hero-lus-stars">
@@ -431,13 +429,13 @@
       el.classList.remove("fa-solid");
       el.classList.add("fa-regular");
       el.style.color = "#ccc";
-      msg.textContent = "Item removed from the wishlist";
+      msg.textContent = "You’ve removed this item from your wishlist";
     } else {
       // Add to wishlist
       el.classList.remove("fa-regular");
       el.classList.add("fa-solid");
       el.style.color = "red";
-      msg.textContent = "Item is being added to the wishlist";
+      msg.textContent = "You’ve added this item to your wishlist";
     }
 
     // Show confirmation
@@ -486,16 +484,16 @@
 </section>
 <script>
   const products = [
+    { name: "Prime Lace", category: "Women", price: "$175", image: "PrimeLace.png" },
+    { name: "Blitz Speed", category: "Unisex", price: "$165", image: "BlitzSpeed.png" },
+    { name: "Easy Rider", category: "Women", price: "$160", image: "EasyRider.png" },
+    { name: "Lus 3.2", category: "Unisex", price: "$160", image: "Lus3.2.png" },
+    { name: "Zoom Flex", category: "Women", price: "$180", image: "ZoomFlex.png" },
+    { name: "Kickstarter Low", category: "Women", price: "$160", image: "Deviate.png" },
+    { name: "Aero Max", category: "Women", price: "$150", image: "AeroMax.png" },
     { name: "Max Lus", category: "Unisex", price: "$260", image: "LustraLab.png" },
-    { name: "Kickstarter Low", category: "Men", price: "$160", image: "Deviate.png" },
-    { name: "Easy Rider", category: "Men", price: "$160", image: "LustraLab.png" },
-    { name: "Lus 3.2", category: "Women", price: "$160", image: "LustraLab.png" },
-    { name: "Aero Max", category: "Men", price: "$150", image: "LustraLab.png" },
-    { name: "Street Wave", category: "Unisex", price: "$170", image: "Deviate.png" },
-    { name: "Zoom Flex", category: "Men", price: "$180", image: "LustraLab.png" },
-    { name: "Retro Runner", category: "Women", price: "$155", image: "Deviate.png" },
-    { name: "Blitz Speed", category: "Unisex", price: "$165", image: "Deviate.png" },
-    { name: "Prime Lace", category: "Men", price: "$175", image: "Deviate.png" },
+    { name: "Street Wave", category: "Unisex", price: "$170", image: "StreetWave.png" },
+    { name: "Retro Runner", category: "Unisex", price: "$155", image: "RetroRunner.png" },
   ];
 
   const track = document.getElementById('carousel-track');

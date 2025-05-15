@@ -24,7 +24,6 @@ body {
 .main-nav ul {
   list-style: none;
   display: flex;
-  gap: 2rem;
   position: relative;
 }
 
@@ -157,8 +156,28 @@ body {
 .icons i {
   font-size: 18px;
   cursor: pointer;
-
 }
+
+/* Ensure solid icons are used */
+.icons i,
+.icons a i {
+  transition: color 0.3s ease;
+}
+
+/* Hover to fill color inside each icon */
+.icons i.fa-user:hover {
+  color: #555555  ;
+}
+
+.icons i.fa-heart:hover {
+  color: red;
+}
+
+.icons a:hover i.fa-bag-shopping {
+  color: #555555  ;
+}
+
+
 
 .shoppingbag-link {
   color: black;
@@ -297,13 +316,18 @@ body {
 }
 
 .category {
-  display: inline-block; /* Ensure categories are side-by-side */
-  vertical-align: top; /* Align categories from top */
-  width: auto; /* Flexible width */
-  padding: 1rem;
-  border-left: 2px solid #333; /* Left border to create box effect */
-  margin-right: 0; /* No margin between categories */
+  display: inline-block;
+  vertical-align: top;
+  width: auto;
+  padding: 0.1rem; /* 🔽 Reduced horizontal padding */
+  border-left: 1px solid #ccc; /* Optional: thinner and lighter */
+  margin-right: 0; /* Already correct */
 }
+
+.category:first-of-type {
+  border-left: none; /* Keep this to avoid double line */
+}
+
 .category h {
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
@@ -405,6 +429,7 @@ body {
   width: 100%;
   height: 500px;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .slides {
@@ -601,13 +626,14 @@ body {
   padding: 1rem 2rem 1rem; /* Reduce top padding if needed */
   max-width: 1200px;
   margin: 0 auto;
+  margin-top: 1rem;
 }
+
 
 .whats-new-title {
   font-family: 'Oswald', sans-serif;
   font-size: 35px;
   letter-spacing: 2px;
-  margin-bottom: 1rem;
   text-transform: uppercase;
   margin-bottom: 1rem;
   cursor: pointer;
@@ -617,7 +643,7 @@ body {
 .whats-new-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 0.5rem;
+  gap: 0.2rem;
 }
 
 .whats-new-item {
@@ -626,7 +652,7 @@ body {
 }
 
 .whats-new-item img {
-  width: 103%;
+  width: 100%;
   height: 215px; /* Adjust height for rectangular shape */
   object-fit: cover;
   display: block;
@@ -656,6 +682,8 @@ body {
   max-width: 900px;
   margin: 0.5rem auto 1rem;
   padding: 1rem 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
 }
 
 .kickstart_section h4.collectionname {
@@ -667,7 +695,6 @@ body {
   color: #000;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-
 }
 
 
@@ -850,6 +877,8 @@ body {
   background-color: white;
   margin: 0;
   padding: 40px 0;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .shop-box {
@@ -862,7 +891,7 @@ body {
 }
 
 .shop-box h2 {
-  font-size: 30px;
+  font-size: 35px;
   font-family: "Oswald", sans-serif;
   font-weight: bold;
   margin: 0 0 10px 0;
@@ -872,13 +901,13 @@ body {
 .shop-box button {
   background-color: #000;
   color: #fff;
-  padding: 6px 14px;       /* 👈 Reduced size */
-  margin: 0 8px;
+  padding: 8px 12px;       /* 👈 Reduced size */
+  margin: 0 5px;
   border: none;
-  font-size: 10px;         /* 👈 Reduced font size */
+  font-size: 14px;         /* 👈 Reduced font size */
   text-transform: uppercase;
   font-weight: 600;
-  letter-spacing: 0.05em;
+  letter-spacing: 0rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin-bottom: 1rem;
@@ -909,6 +938,7 @@ body {
    width: 100%;
   padding: 2rem 0 0 0; /* Removed bottom padding */
   margin: 0;
+  margin-top: 1.5rem;
 }
 
 /* Heading */
@@ -977,7 +1007,8 @@ body {
   background-color: white;
   max-width: 1000px;
   margin: 0 auto;
-  margin-top: 1rem; /* Ensure no top space */
+  margin-top: 1.5rem; /* Ensure no top space */
+  margin-bottom: 1rem;
 }
 
 .head-slogan {
@@ -1211,8 +1242,8 @@ body {
   font-family: 'Oswald', sans-serif;
   font-size: 45px;
   text-align: center;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
 }
 
 .product-grid-men {
@@ -1314,7 +1345,7 @@ body {
   margin-left: 0;
   padding-left: 0;
   text-align: left;
-  margin-bottom: 0px;
+  margin-bottom: 10px;
 }
 
 .product-card-men h3 {
@@ -1345,6 +1376,7 @@ body {
   align-items: center;
   justify-content: center;
   margin-top: 2rem;
+  cursor: pointer;
 }
 
 .overlay-content {
@@ -1387,6 +1419,7 @@ body {
   padding: 1rem 2rem 1rem;
   max-width: 1200px;
   margin: 2rem auto 0;
+  margin-top: 3rem;
 }
 
 .trending-title {
@@ -1430,10 +1463,11 @@ body {
   font-family: 'Oswald', sans-serif;
   font-size: 35px;
   letter-spacing: 2px;
-  margin-bottom: 1rem;
+  margin-bottom: -1.1rem;
   margin-left: 4rem;
-  margin-top: 2rem;
+  margin-top: 3rem;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .carousel-container {
@@ -1445,12 +1479,12 @@ body {
 
 .carousel-track {
   display: flex;
+  margin-top: 2rem;
   justify-content: flex-start;
   overflow-x: auto;
   scroll-behavior: smooth;
-  gap: 1rem;
   padding-left: 0;
-  scrollbar-width: none;        /* Firefox */
+  scrollbar-width: Firefox;        /* Firefox */
   -ms-overflow-style: none;     /* IE 10+ */
 }
 
@@ -1460,7 +1494,11 @@ body {
   padding: 1rem;
   text-align: left;
   flex-shrink: 0;
-  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}
+
+
+.new-arrival-product-card:hover {
+  border: 1px solid #e5e5e5;
 }
 
 .new-arrival-product-card img {
@@ -1469,19 +1507,20 @@ body {
   height: auto;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+  border-radius: 4px;
   margin-bottom: 0.8rem;
 }
 
 .new-arrival-product-card h3 {
   font-size: 1rem;
   font-weight: 600;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.6rem;
 }
 
 .category {
   font-size: 0.85rem;
   color: #777;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.7rem;
 }
 
 .price {
@@ -1555,6 +1594,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 2px;
   margin: 1rem 2rem;
+  cursor: pointer;
 }
 
 .carousel-wrapper {
@@ -1572,7 +1612,7 @@ body {
   gap: 1rem;
   padding: 0;
   margin: 0;
-  scrollbar-width: none;        /* Firefox */
+  scrollbar-width: firefox;        /* Firefox */
   -ms-overflow-style: none;     /* IE 10+ */
 }
 
@@ -2213,7 +2253,7 @@ body {
 
 
 .product-count {
-  font-size: 16px;
-  font-weight: 700;
-  margin: 1rem 0;
+  font-size: 20px;
+  margin-left: 2rem;
+  margin-bottom: 2rem;
 }
